@@ -1,0 +1,209 @@
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background:#D7D6DE;
+  text-align: center;
+  background-image: url("https://images.unsplash.com/photo-1494228766058-1430438d10fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80");
+  background-repeat: no-repeat;
+  background-position: right 50% top;
+
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#pic{
+  width: 100%;
+  height: 65vh;
+  object-fit: cover;
+}
+.css-46bh2p-MuiCardContent-root {
+  padding: 0 5px !important
+}
+.css-kfme34-MuiCardContent-root{
+  padding: 0px !important
+}
+
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
+  padding: 5px 10px
+}
+
+.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item{
+  color: white
+
+}
+
+.css-1qw96cp{
+  padding: 0 !important
+}
+
+.css-18zqa7g{
+  padding: 0 !important
+
+}
+
+.pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
+  background-color:rgb(28 21 39);
+}
+
+.pro-sidebar .pro-menu{
+  background-color: rgb(9 6 15)
+}
+
+.css-4vzbn3-MuiButtonBase-root-MuiButton-root:hover{
+  background-color: rgb(79 36 113);
+}
+
+.css-nmn2m9-MuiGrid-root.MuiGrid-item {
+    padding-left: 34px;
+}
+
+.css-xgs5wp .MuiGrid-item{
+  padding-left: 0 !important;
+}
+
+.MuiBadge-badge, .css-106c1u2-MuiBadge-badge {
+  background-color: rgb(174 27 212) !important
+}
+
+.css-aqutp7-MuiGrid-root{
+  padding: 20px
+}
+.css-wjh20t-MuiPagination-ul {
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.574);
+  border-radius: 5px;
+}
+
+.css-1p5q5e5-MuiStack-root{
+  align-items: center;
+}
+
+.css-1ld3b9g-MuiGrid-root > .MuiGrid-item {
+  padding-left: 0 !important
+}
+
+#homepic{
+  /* background-image: url("https://preview.colorlib.com/theme/shionhouse/assets/img/hero/h1_hero1.png.webp"); */
+  /* https://i.ibb.co/RywYP9M/Purple-Modern-Computer-Recommendation-You-Tube-Thumbnail.png */
+  color: white;
+  /* height: 65vh; */
+  background-size: cover;
+  background-position: right;
+}
+
+#home{
+  margin-right: 50%;
+  padding-top: 3%;
+  text-align-last: center;
+}
+
+#home h1, h2, h3, button{
+  text-align: left;
+  padding: 2vh;
+}
+
+#home h1{
+  font-size: 70px;
+  text-align-last: center;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#home h2 {
+  font-size: 40px;
+  padding-bottom: 30px;
+}
+
+#home h3{
+  text-align: end;
+  padding: 5%;
+
+}
+
+.titlehome{
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+@media screen and (max-width:650px){
+  #home h3, h2{
+    display: none;
+  }
+  #home h1{
+    font-size: 40px;
+  }
+
+  #home button{
+    font-size: 20px;
+    padding: 0 15px;
+  }
+  #homepic{
+    height: 30vh;
+  }
+
+}
+
+.titlealiarg:hover {
+  color: white !important
+}
+
+.footer {
+  background-color: #D7D6DE;
+  width: 100%;
+  box-shadow: 0 -5px 6px rgba(0,0,0,0.5);
+  z-index: 10000;
+}
+
+
+#whatsapp:hover{
+  color: rgb(37, 211, 102)
+}
+
+#twitter:hover{
+  color: #1DA1F2
+}
+
+.fa-times:before, .fa-plus:before, .fa-minus:before{
+  color: rgb(79 36 113)
+}
+
+.MuiSnackbar-anchorOriginTopRight {
+  top: 60px !important;
+}
+
+#arrivals{
+  position: absolute;
+  z-index: 10000;
+  color: white;
+  background-color: #D7D6DE;
+  left: 20px;
+  padding: 5px 10px;
+  border-radius: 2px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px pink;
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+  ;
+}
+
+#dividerNavbar{
+  height: 28px;
+  width: 2px;
+  align-self: center;
+}
+
+.logreg{
+  background-color: #ffffffed;
+  border-radius: 5px;
+  margin-bottom: 70px;
+  padding-bottom: 50px;
+}
