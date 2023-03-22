@@ -8,8 +8,16 @@ const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer);
 const routerCart = require("./routes/cart");
 const websocket = require("./service/chat.js");
-const { MongoSession, MongoDBService } = require("./config/services");
 const routerProducts = require("./routes/products");
+
+const { MongoSession, MongoDBService } = require("./config/services");
+// MongoDBService();
+
+if (process.argv[3] !== "dev") {
+  app.use(MongoSession);
+  app.use(passport.initialize());
+  app.use(passport.session());
+}
 
 app.use(express.static(__dirname + "/public"));
 
@@ -25,13 +33,7 @@ app.engine(
   })
 );
 
-MongoDBService();
-
-app.use(MongoSession);
 app.use(cors());
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

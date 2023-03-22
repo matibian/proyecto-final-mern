@@ -16,6 +16,10 @@ function checkAuthentication(req, res, next) {
 
 routerProducts.get("/", routes.getProducts);
 
+routerProducts.get("/:category", routes.getCategory);
+
+routerProducts.get("/id/:id", routes.getById);
+
 routerProducts.delete("/:id", routes.delProducts);
 
 routerProducts.post("/", routes.postProducts);

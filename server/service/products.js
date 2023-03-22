@@ -1,20 +1,30 @@
-// const DAOproducts = require("../models/DAOs/DAOproducts");
-// // const { DAO } = require("");
+// const productsDAO = require("../models/DAOs/DAOproducts");
+const DAO = require("../models/DAOs/DAOproducts/factoryDAOSproducts");
 
-// async function getProducts() {
-//   return await DAOproducts.getAll();
-// }
+async function getProducts() {
+  return await DAO.getAll();
+}
 
-// async function delProducts(id) {
-//   return await DAOproducts.deleteById(id);
-// }
+async function getByCategory(category) {
+  return await DAO.getByCategory(category);
+}
 
-// async function postProducts(product) {
-//   return await DAOproducts.save(product);
-// }
+async function getById(id) {
+  return await DAO.getById(id);
+}
 
-// module.exports = {
-//   getProducts,
-//   postProducts,
-//   delProducts,
-// };
+async function delProducts(id) {
+  return await DAO.deleteById(id);
+}
+
+async function postProducts(product) {
+  return await DAO.save(product);
+}
+
+module.exports = {
+  getByCategory,
+  getById,
+  getProducts,
+  postProducts,
+  delProducts,
+};

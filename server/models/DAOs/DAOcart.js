@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const UsuariosProd = require("../DAOs/mongoModels/usersModel");
-const DAOproducts = require("./DAOproducts");
+const DAOproducts = require("./DAOproducts/factoryDAOSproducts");
 
 class DAOcarts {
   constructor() {

@@ -1,4 +1,4 @@
-const DAOproducts = require("../models/DAOs/DAOproducts");
+const productService = require("../service/products");
 // const log4js = require("log4js");
 // log4js.configure({
 //   appenders: {
@@ -17,8 +17,32 @@ const DAOproducts = require("../models/DAOs/DAOproducts");
 
 async function getProducts(req, res) {
   try {
-    const totalProducts = await DAOproducts.getAll();
+    const totalProducts = await productService.getProducts();
     res.status(200).json(totalProducts);
+  } catch (error) {
+    console.log("Error: " + error);
+    res
+      .status(500)
+      .render("error", { error: error, status: 500, layout: "error" });
+  }
+}
+
+async function getCategory(req, res) {
+  try {
+    const category = req.params.category;
+    const categoryProducts = await productService.getByCategory(category);
+    res.status(200).json(categoryProducts);
+  } catch (error) {
+    console.log("Error: " + error);
+    res.status(500).render("error", { error: error, layout: "error" });
+  }
+}
+
+async function getById(req, res) {
+  try {
+    const id = req.params.id;
+    const product = await productService.getById(id);
+    res.status(200).json(product);
   } catch (error) {
     console.log("Error: " + error);
     res.status(500).render("error", { error: error, layout: "error" });
@@ -28,7 +52,7 @@ async function getProducts(req, res) {
 async function delProducts(req, res) {
   try {
     const id = req.params.id;
-    await DAOproducts.deleteById(id);
+    await productService.delProducts(id);
     res.status(202).send("Producto borrado");
   } catch (error) {
     console.log("Error: " + error);
@@ -39,7 +63,7 @@ async function delProducts(req, res) {
 async function postProducts(req, res) {
   try {
     const product = req.body;
-    await DAOproducts.save(product);
+    await productService.postProducts(product);
 
     res.status(201).json(product);
   } catch (error) {
@@ -49,6 +73,8 @@ async function postProducts(req, res) {
 }
 
 module.exports = {
+  getById,
+  getCategory,
   getProducts,
   postProducts,
   delProducts,

@@ -9,9 +9,9 @@ export default function ItemListContainerCarrousel() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  fetch("http://127.0.0.1:8080/api/products")
-    .then((response) => response.json())
-    .then((data) => setItems(data));
+  // fetch("http://127.0.0.1:8080/api/products")
+  //   .then((response) => response.json())
+  //   .then((data) => setItems(data));
 
   useEffect(() => {
     fetch("http://127.0.0.1:8080/api/products")
@@ -20,24 +20,26 @@ export default function ItemListContainerCarrousel() {
         setItems(data);
         console.log(data);
       })
-      .then(setLoading(true));
+      .then(setLoading(true))
 
-    // const products = query(
-    //   collection(db, "products-fashion"),
-    //   where("nov", "==", true)
-    // );
-    // getDocs(products)
-    //   .then((res) => {
-    //     const list = res.docs.map((product) => {
-    //       return {
-    //         id: product.id,
-    //         ...product.data(),
-    //       };
-    //     });
-    //     setItems(list);
-    //   })
-    //   .catch((err) => setError(err))
-    //   .finally(() => setLoading(false));
+      // const products = query(
+      //   collection(db, "products-fashion"),
+      //   where("nov", "==", true)
+      // );
+      // getDocs(products)
+      //   .then((res) => {
+      //     const list = res.docs.map((product) => {
+      //       return {
+      //         id: product.id,
+      //         ...product.data(),
+      //       };
+      //     });
+      //     console.log(list);
+      //     setItems(list);
+      //   })
+
+      .catch((err) => setError(err))
+      .finally(() => setLoading(false));
   }, []);
 
   return (

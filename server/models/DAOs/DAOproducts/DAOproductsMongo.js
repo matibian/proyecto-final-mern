@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const productModel = require("./mongoModels/productModel");
+const productModel = require("../mongoModels/productModel");
 
-class DAOProducts {
+class DAOProductsMongo {
   constructor() {
     this.model = mongoose.model("productos", productModel);
     // MongoDBService.init();
@@ -47,9 +47,9 @@ class DAOProducts {
   }
 }
 
-const DAOproduct = new DAOProducts();
+// const DAOproductMongo = new DAOProductsMongo();
 
-module.exports = DAOproduct;
+module.exports = DAOProductsMongo;
 
 // const { optionsMYSQL } = require("../options/mysql.js");
 // const knex = require("knex")(optionsMYSQL);
