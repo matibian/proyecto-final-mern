@@ -1,5 +1,5 @@
 const { normalize, schema } = require("normalizr");
-const username = VERRRRRRRRR;
+const username = "VERRRRRRRRR";
 
 const moment = require("moment");
 const timestamp = moment().format("lll");

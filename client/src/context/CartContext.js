@@ -7,11 +7,11 @@ export const CartProvider = ({ children }) => {
   const [envio, setEnvio] = useState(0);
   const [discount, setDiscount] = useState(false);
 
-  useEffect(() => {
-    fetch("https://localhost/api/cart")
-      .then((response) => response.json())
-      .then((products) => setCart(products));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://localhost:3000/api/cart")
+  //     .then((response) => response.json())
+  //     .then((products) => setCart(products));
+  // }, []);
 
   const addItem = (item) => {
     const existInCart = cart.find((prod) => prod.id === item.id);

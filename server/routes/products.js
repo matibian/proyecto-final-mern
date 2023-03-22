@@ -14,10 +14,10 @@ function checkAuthentication(req, res, next) {
   }
 }
 
-routerProducts.get("/", checkAuthentication, routes.getProducts);
+routerProducts.get("/", routes.getProducts);
 
-routerProducts.delete("/:id", checkAuthentication, routes.delProducts);
+routerProducts.delete("/:id", routes.delProducts);
 
-routerProducts.post("/", checkAuthentication, routes.postProducts);
+routerProducts.post("/", routes.postProducts);
 
 module.exports = routerProducts;

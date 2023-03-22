@@ -7,7 +7,7 @@ const messageSchema = new mongoose.Schema({
   timestamp: { type: String, required: true, max: 100 },
   message: { type: String, required: true, max: 5000 },
 });
-UsuarioSchema.plugin(findOrCreate);
+messageSchema.plugin(findOrCreate);
 
 // const UsuariosProd = mongoose.model("usersprod", messageSchema);
 module.exports = messageSchema;

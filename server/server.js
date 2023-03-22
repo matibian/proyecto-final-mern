@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const { engine } = require("express-handlebars");
 const app = express();
+const cors = require("cors");
 const config = require("./config/config");
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer);
@@ -27,6 +28,7 @@ app.engine(
 MongoDBService();
 
 app.use(MongoSession);
+app.use(cors());
 
 app.use(passport.initialize());
 app.use(passport.session());
