@@ -6,7 +6,7 @@ async function getConfigs() {
     ? (configs.persistencia = "Memoria")
     : (configs.persistencia = "MongoDB");
 
-  return;
+  return configs;
 }
 
 async function getByCategory(category) {

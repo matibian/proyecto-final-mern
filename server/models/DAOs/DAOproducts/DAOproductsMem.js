@@ -1,10 +1,9 @@
-const productos = require("./productosMem");
+const productos = require("../../DB/productosMem");
 
 class DAOproductsMem {
   constructor() {}
 
   getAll = async () => {
-    productos = bla;
     return productos;
   };
 

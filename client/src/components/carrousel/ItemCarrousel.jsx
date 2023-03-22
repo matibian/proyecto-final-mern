@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export default function ItemCarrousel({ item }) {
-  const { name, thumbnail, price, id, stock } = item;
+  const { name, thumbnail, price, id, _id, stock } = item;
   const navigate = useNavigate();
   const { cart, addItem } = useCart();
 
@@ -93,7 +93,7 @@ export default function ItemCarrousel({ item }) {
               paddingBottom: "2px",
               color: "white",
             }}
-            onClick={() => navigate(`/detail/${id}`)}
+            onClick={() => navigate(`/detail/${_id ? _id : id}`)}
           >
             Detalles
           </Button>

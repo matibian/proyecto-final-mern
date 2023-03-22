@@ -10,9 +10,6 @@ switch (modo) {
   case "dev":
     DAO = new DAOmessagesMem();
     break;
-  case "test":
-    DAO = new DAOmessagesFS();
-    break;
   case "prod":
     DAO = new DAOmessagesMongo();
     break;

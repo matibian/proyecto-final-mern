@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const usersModel = require("../DAOs/mongoModels/usersModel");
+const usersModel = require("../mongoModels/usersModel");
 
 class DAOusers {
   constructor() {

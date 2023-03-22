@@ -8,18 +8,16 @@ modo = process.argv[3];
 switch (modo) {
   case "dev":
     DAO = new DAOproductsMem();
-    console.log("DAO Dev");
+    console.log("DAO Memoria");
     break;
-  case "test":
-    DAO = new DAOproductsMem();
-    console.log("DAO test");
-    break;
+
   case "prod":
     DAO = new DAOproductsMongo();
-    console.log("DAO prod");
+    console.log("DAO MongoDB");
     break;
   default:
     DAO = new DAOproductsMongo();
+    console.log("DAO MongoDB");
     break;
 }
 

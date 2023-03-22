@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const productModel = require("../mongoModels/productModel");
+const productModel = require("../../mongoModels/productModel");
 
 class DAOProductsMongo {
   constructor() {
@@ -20,7 +20,6 @@ class DAOProductsMongo {
 
   async getById(id) {
     const response = await this.model.findById(id);
-
     return response;
   }
 
@@ -41,8 +40,6 @@ class DAOProductsMongo {
       .find()
       .where({ category: category })
       .lean();
-    console.log(category);
-    console.log(products);
     return products;
   }
 }
