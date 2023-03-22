@@ -6,9 +6,10 @@ const cors = require("cors");
 const config = require("./config/config");
 const httpServer = require("http").createServer(app);
 const io = require("socket.io")(httpServer);
-const routerCart = require("./routes/cart");
 const websocket = require("./service/chat.js");
+const routerCart = require("./routes/cart");
 const routerProducts = require("./routes/products");
+const routerAdmin = require("./routes/admin");
 
 const { MongoSession, MongoDBService } = require("./config/services");
 // MongoDBService();
@@ -22,7 +23,7 @@ if (process.argv[3] !== "dev") {
 app.use(express.static(__dirname + "/public"));
 
 app.set("view engine", "hbs");
-app.set("views", "./views");
+app.set("views", "./views/layouts");
 app.engine(
   "hbs",
   engine({
@@ -40,6 +41,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/products", routerProducts);
 app.use("/api/cart", routerCart);
+app.use("/admin", routerAdmin);
 
 websocket(io);
 

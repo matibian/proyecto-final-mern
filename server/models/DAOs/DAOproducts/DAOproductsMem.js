@@ -4,6 +4,7 @@ class DAOproductsMem {
   constructor() {}
 
   getAll = async () => {
+    productos = bla;
     return productos;
   };
 
