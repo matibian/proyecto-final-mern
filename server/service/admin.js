@@ -9,21 +9,21 @@ async function getConfigs() {
   return configs;
 }
 
-async function getByCategory(category) {
-  return await DAO.getByCategory(category);
-}
+// async function getByCategory(category) {
+//   return await DAO.getByCategory(category);
+// }
 
-async function getById(id) {
-  return await DAO.getById(id);
-}
+// async function getById(id) {
+//   return await DAO.getById(id);
+// }
 
-async function delProducts(id) {
-  return await DAO.deleteById(id);
-}
+// async function delProducts(id) {
+//   return await DAO.deleteById(id);
+// }
 
-async function postProducts(product) {
-  return await DAO.save(product);
-}
+// async function postProducts(product) {
+//   return await DAO.save(product);
+// }
 
 module.exports = {
   getConfigs,

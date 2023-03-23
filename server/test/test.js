@@ -15,6 +15,8 @@ const generatePost = () => {
   return post;
 };
 
+const categories = ["Pantalones", "Camisas", "Accesorios"];
+
 describe("Prueba de los endpoints de Productos", () => {
   //GET
   describe("GET ALL", () => {
@@ -23,6 +25,17 @@ describe("Prueba de los endpoints de Productos", () => {
       const res = await request.get("/api/products");
       expect(res.status).to.eql(200);
       expect(res.body).to.be.a("array");
+    });
+  });
+  //GET CATEGORY
+  describe("GET CATEGORY", () => {
+    categories.forEach((cat) => {
+      it("Status 200. Muestra un array", async () => {
+        console.log(`GET: /api/products/${cat}`);
+        const res = await request.get(`/api/products/${cat}`);
+        expect(res.status).to.eql(200);
+        expect(res.body).to.be.a("array");
+      });
     });
   });
   //POST;

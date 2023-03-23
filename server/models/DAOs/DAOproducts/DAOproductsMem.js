@@ -10,7 +10,7 @@ class DAOproductsMem {
   save = async (producto) => {
     try {
       const id =
-        producto.length === 0 ? 1 : mensajes[mensajes.length - 1].id + 1;
+        producto.length === 0 ? 1 : producto[producto.length - 1].id + 1;
 
       producto.id = id;
 

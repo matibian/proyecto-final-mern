@@ -34,13 +34,15 @@
     "mongoose": "^6.8.1",
     "mongoose-findorcreate": "^3.0.0",
     "mysql": "^2.18.1",
+    "nanoid": "^4.0.1",
     "normalizr": "^3.6.2",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^0.1.5",
     "socket.io": "^4.6.1",
     "sqlite3": "^5.1.6",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0"
