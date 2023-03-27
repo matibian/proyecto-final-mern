@@ -6,7 +6,6 @@ const cookies = new Cookies();
 // receives component and any other props represented by ...rest
 export default function ProtectedRoutes({ component: Component, ...rest }) {
   return (
-
     // this route takes other routes assigned to it from the App.js and return the same route if condition is met
     <Route
       {...rest}
@@ -19,11 +18,7 @@ export default function ProtectedRoutes({ component: Component, ...rest }) {
           return <Component {...props} />;
         } else {
           // returns the user to the landing page if there is no valid token set
-          return (
-            <Navigate
-              to={"/login"}
-            />
-          );
+          return <Navigate to={"/login"} />;
         }
       }}
     />

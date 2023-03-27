@@ -45,7 +45,7 @@ export default function ItemListCarrousel({ items, loading }) {
           // :
           items.map((item) => (
             <div key={item.id}>
-              <ItemCarrousel item={item} />
+              <ItemCarrousel item={item} key={item.id} />
             </div>
           ))
         }

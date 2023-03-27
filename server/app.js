@@ -1,6 +1,7 @@
 const express = require("express");
 const passport = require("passport");
 const { engine } = require("express-handlebars");
+const { errorHandler } = require("./middlewares/errorMiddleware");
 const app = express();
 const cors = require("cors");
 const config = require("./config/config");
@@ -9,8 +10,10 @@ const io = require("socket.io")(httpServer);
 const websocket = require("./service/chat.js");
 const routerCart = require("./routes/cart");
 const routerProducts = require("./routes/products");
+const routerAuth = require("./routes/auth.js");
 const routerAdmin = require("./routes/admin");
-const { MongoSession } = require("./config/services");
+const { MongoSession, MongoDBService } = require("./config/services");
+const authPassport = require("./middlewares/authPassport");
 
 class Server {
   constructor(modo) {
@@ -27,15 +30,19 @@ class Server {
     app.use("/api/products", routerProducts);
     app.use("/api/cart", routerCart);
     app.use("/admin", routerAdmin);
+    app.use("/auth", routerAuth);
   }
 
   middlewares(modo) {
     app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
+    app.use(errorHandler);
 
     if (modo !== "dev") {
+      MongoDBService();
       app.use(MongoSession);
+      authPassport();
       app.use(passport.initialize());
       app.use(passport.session());
     }

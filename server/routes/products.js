@@ -1,27 +1,20 @@
 const express = require("express");
 const { Router } = express;
-const authPassport = require("../middlewares/authPassport");
 const routerProducts = new Router();
-const routes = require("../controller/products");
+const {
+  getProducts,
+  getCategory,
+  getById,
+  delProducts,
+  postProducts,
+} = require("../controller/products");
 
-authPassport();
+routerProducts.get("/", getProducts).post(postProducts);
 
-function checkAuthentication(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect("/login");
-  }
-}
+routerProducts.delete("/:id", delProducts);
 
-routerProducts.get("/", routes.getProducts);
+routerProducts.get("/id/:id", getById);
 
-routerProducts.get("/:category", routes.getCategory);
-
-routerProducts.get("/id/:id", routes.getById);
-
-routerProducts.delete("/:id", routes.delProducts);
-
-routerProducts.post("/", routes.postProducts);
+routerProducts.get("/:category", getCategory);
 
 module.exports = routerProducts;

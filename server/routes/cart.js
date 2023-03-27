@@ -1,27 +1,21 @@
 const express = require("express");
 const { Router } = express;
-const authPassport = require("../middlewares/authPassport");
+// const authPassport = require("../middlewares/authPassport");
 const routerCart = new Router();
 const routes = require("../controller/cart");
 
-authPassport();
+const { auth } = require("../middlewares/auth");
 
-function checkAuthentication(req, res, next) {
-  if (req.isAuthenticated()) {
-    next();
-  } else {
-    res.redirect("/login");
-  }
-}
+routerCart.get("/", auth, routes.getCart);
 
-routerCart.get("/", checkAuthentication, routes.getCart);
+routerCart.post("/prod/:id", auth, routes.postProdCart);
 
-routerCart.post("/prod/:id", checkAuthentication, routes.postProdCart);
+routerCart.put("/add/:id", auth, routes.postAdd);
 
-routerCart.put("/add/:id", checkAuthentication, routes.postAdd);
+routerCart.put("/subs/:id", auth, routes.postSubs);
 
-routerCart.put("/subs/:id", checkAuthentication, routes.postSubs);
+routerCart.delete("/:id", auth, routes.postDelProductCart);
 
-routerCart.delete("/:id", checkAuthentication, routes.postDelProductCart);
+routerCart.delete("/:id", auth, routes.postDelProductCart);
 
 module.exports = routerCart;

@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import Footer from "./components/Footer";
 import ItemListContainerCarrousel from "./components/carrousel/ItemListContainerCarrousel";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import ItemListContainer from "./components/Grid/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 import { CartProvider } from "./context/CartContext";
@@ -15,6 +15,8 @@ import OrdersPointer from "./components/Orders/OrdersPointer";
 import OrdersContainer from "./components/Orders/OrdersContainer";
 import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
+import ProtectedRoute from "./ProtectedRoute";
+import Prueba from "./components/Prueba";
 // import { UserProvider } from './context/userContext';
 
 const theme = createTheme({
@@ -27,13 +29,14 @@ const theme = createTheme({
 
 export default function App() {
   // const [user, setUser] = useState(null);
-  // cons ({ user, children }) => {
+  // const auth = ({ user, children }) => {
   //   if (!user) {
   //     return <Navigate to="/login" replace />;
   //   }
 
   //   return children;
   // };
+  const auth = true;
 
   // const handleLogin = () => setUser({ id: "1", name: "robin" });
   // const handleLogout = () => setUser(null);
@@ -64,6 +67,7 @@ export default function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<CheckOut />} />
           <Route path="/mis_pedidos" element={<OrdersPointer />} />
+          <Route path="/prueba" element={<Prueba />} />
           <Route path="/mis_pedidos/:id" element={<OrdersContainer />} />
         </Routes>
         <Footer />

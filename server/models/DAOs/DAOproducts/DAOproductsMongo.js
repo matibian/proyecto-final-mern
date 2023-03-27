@@ -14,7 +14,6 @@ class DAOProductsMongo {
 
   async save(element) {
     const response = await this.model.create(element);
-
     return response;
   }
 
@@ -24,7 +23,7 @@ class DAOProductsMongo {
   }
 
   async deleteById(id) {
-    const response = await this.collection.findByIdAndDelete(id);
+    const response = await this.model.findByIdAndDelete(id);
     return response;
   }
 

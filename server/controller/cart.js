@@ -5,6 +5,7 @@ const DAOusers = require("../models/DAOs/DAOusers");
 
 async function postProdCart(req, res) {
   try {
+    const timestamp = new Date().getTime();
     const id = req.params.id;
     const user = await DAOusers.getAll(req.session.user);
     await DAOcart.postById(user, id, timestamp);
