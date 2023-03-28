@@ -26,6 +26,15 @@ export default function NavBar() {
     setAnchorElNav(event.currentTarget);
   };
 
+  const handleLogout = () => {
+    fetch("http://127.0.0.1:8080/auth/logout")
+      .then((res) => {
+        res.json();
+      })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
   const navigate = useNavigate();
 
   const handleCloseNavMenu = () => {
@@ -222,11 +231,11 @@ export default function NavBar() {
                 <Typography textAlign="center">Login</Typography>
               </MenuItem>
 
-              <MenuItem onClick={handleCloseUserMenu}>
+              <MenuItem onClick={() => navigate(`/prueba`)}>
                 <Typography textAlign="center">Cuenta</Typography>
               </MenuItem>
 
-              <MenuItem onClick={handleCloseUserMenu}>
+              <MenuItem onClick={handleLogout}>
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
               {/* {settings.map((setting) => (

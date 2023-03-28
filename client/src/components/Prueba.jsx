@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Prueba() {
   fetch("http://127.0.0.1:8080/auth/prueba")
@@ -6,5 +6,12 @@ export default function Prueba() {
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 
-  return <div>Prueba</div>;
+  const [session, setSession] = useState("");
+
+  return (
+    <>
+      <div>Prueba</div>
+      <div>{session}</div>
+    </>
+  );
 }

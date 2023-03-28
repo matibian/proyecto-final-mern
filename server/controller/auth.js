@@ -5,9 +5,6 @@ const UserModel = require("../models/mongoModels/usersModel.js");
 const { default: mongoose } = require("mongoose");
 const User = mongoose.model("users", UserModel);
 
-// @desc    Register new user
-// @route   POST /api/users
-// @access  Public
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password, dir, age, phone, avatar } = req.body;
 
@@ -24,11 +21,9 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error("Usuario ya existe");
   }
 
-  // Hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
 
-  // Create user
   const user = await User.create({
     name,
     email,
@@ -53,23 +48,23 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Authenticate a user
-// @route   POST /api/users/login
-// @access  Public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  //Check for user email
+  // Check for user email
   const user = await User.findOne({ email });
   console.log(user);
 
   if (user && (await bcrypt.compare(password, user.password))) {
     token = generateToken(user._id);
-    req.session.user = email;
-    req.session.token = res.json({
-      _id: user.id,
-      name: user.name,
-      email: user.email,
-      token,
+    req.session.user = { uuid: "user-" + user._id };
+    req.session.user.token = token;
+    console.log(req.session);
+    req.session.save((err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(req.session);
+      }
     });
     //   .redirect(`back`);
   } else {
@@ -78,9 +73,6 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get user data
-// @route   GET /api/users/me
-// @access  Private
 const getUser = async (req, res) => {
   res.status(200).json(req.user);
 };

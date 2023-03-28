@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+const session = require("express-session");
 const { engine } = require("express-handlebars");
 const { errorHandler } = require("./middlewares/errorMiddleware");
 const app = express();
@@ -34,17 +35,22 @@ class Server {
   }
 
   middlewares(modo) {
-    app.use(cors());
+    app.use(
+      cors({
+        origin: "http://localhost:3000",
+        credentials: true,
+      })
+    );
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use(errorHandler);
 
     if (modo !== "dev") {
       MongoDBService();
-      app.use(MongoSession);
-      authPassport();
-      app.use(passport.initialize());
-      app.use(passport.session());
+      app.use(session(MongoSession));
+      // authPassport();
+      // app.use(passport.initialize());
+      // app.use(passport.session());
     }
   }
 
