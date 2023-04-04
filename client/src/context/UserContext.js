@@ -1,21 +1,23 @@
-import React, { createContext, useContext } from 'react'
-import {useAuth} from './auth-context'
+import React, { createContext, useContext, useEffect, useState } from "react";
 
-const UserContext = createContext()
+export const UserContext = createContext();
 
-function UserProvider(props) {
-  const {
-    data: {user},
-  } = useAuth()
-  return <UserContext.Provider value={user} {...props} />
-}
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState([]);
 
-function useUser() {
-  const context = useContext(UserContext)
-  if (context === undefined) {
-    throw new Error(`useUser must be used within a UserProvider`)
-  }
-  return context
-}
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
 
-export {UserProvider, useUser}
+  return (
+    <UserContext.Provider
+      value={{
+        user,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export const useUser = () => useContext(UserContext);

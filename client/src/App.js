@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./components/Footer";
 import ItemListContainerCarrousel from "./components/carrousel/ItemListContainerCarrousel";
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -13,10 +13,9 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import NavBar from "./components/NavBar/NavBar";
 import OrdersPointer from "./components/Orders/OrdersPointer";
 import OrdersContainer from "./components/Orders/OrdersContainer";
-import RegisterForm from "./components/RegisterForm";
-import LoginForm from "./components/LoginForm";
-import ProtectedRoute from "./ProtectedRoute";
-import Prueba from "./components/Prueba";
+import Cuenta from "./components/cuenta/Cuenta";
+import { UserProvider } from "./context/UserContext";
+import { AuthProvider } from "./context/AuthContext";
 // import { UserProvider } from './context/userContext';
 
 const theme = createTheme({
@@ -28,51 +27,41 @@ const theme = createTheme({
 });
 
 export default function App() {
-  // const [user, setUser] = useState(null);
-  // const auth = ({ user, children }) => {
-  //   if (!user) {
-  //     return <Navigate to="/login" replace />;
-  //   }
-
-  //   return children;
-  // };
-  const auth = true;
-
-  // const handleLogin = () => setUser({ id: "1", name: "robin" });
-  // const handleLogout = () => setUser(null);
-
   console.log("Proyecto Final del curso de Backend para CODERHOSE");
   console.log("Por Matias Bianchi");
 
   return (
-    // <UserProvider>
-    <CartProvider>
-      <ThemeProvider theme={theme}>
-        <NavBar />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-                <ItemListContainerCarrousel />
-              </>
-            }
-          />
-          <Route path="/category/all" element={<ItemListContainer />} />
-          <Route path="/detail/:id" element={<ItemDetailContainer />} />
-          <Route path="/category/:category" element={<ItemListContainer />} />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<CheckOut />} />
-          <Route path="/mis_pedidos" element={<OrdersPointer />} />
-          <Route path="/prueba" element={<Prueba />} />
-          <Route path="/mis_pedidos/:id" element={<OrdersContainer />} />
-        </Routes>
-        <Footer />
-      </ThemeProvider>
-    </CartProvider>
-    // </UserProvider>
+    <UserProvider>
+      <AuthProvider>
+        <CartProvider>
+          <ThemeProvider theme={theme}>
+            <NavBar />
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Home />
+                    <ItemListContainerCarrousel />
+                  </>
+                }
+              />
+              <Route path="/category/all" element={<ItemListContainer />} />
+              <Route path="/detail/:id" element={<ItemDetailContainer />} />
+              <Route
+                path="/category/:category"
+                element={<ItemListContainer />}
+              />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/checkout" element={<CheckOut />} />
+              <Route path="/mis_pedidos" element={<OrdersPointer />} />
+              <Route path="/cuenta" element={<Cuenta />} />
+              {/* <Route path="/mis_pedidos/:id" element={<OrdersContainer />} /> */}
+            </Routes>
+            <Footer />
+          </ThemeProvider>
+        </CartProvider>
+      </AuthProvider>
+    </UserProvider>
   );
 }

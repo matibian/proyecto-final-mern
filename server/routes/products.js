@@ -8,13 +8,16 @@ const {
   delProducts,
   postProducts,
 } = require("../controller/products");
+const { auth } = require("../middlewares/auth");
 
-routerProducts.get("/", getProducts).post(postProducts);
+routerProducts.get("/", auth, getProducts);
+
+routerProducts.post("/", postProducts);
 
 routerProducts.delete("/:id", delProducts);
 
-routerProducts.get("/id/:id", getById);
+routerProducts.get("/id/:id", auth, getById);
 
-routerProducts.get("/:category", getCategory);
+routerProducts.get("/:category", auth, getCategory);
 
 module.exports = routerProducts;

@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 export default function ItemModal(props) {
   const navigate = useNavigate();
 
-  const { id, name, description, thumbnail, price, stars } = props.item;
+  const { _id, name, description, thumbnail, price, stars } = props.item;
 
   return props.trigger ? (
     <div className="popup">
@@ -72,7 +72,7 @@ export default function ItemModal(props) {
               <br />
               <br />
               <Button
-                onClick={() => navigate(`/detail/${id}`)}
+                onClick={() => navigate(`/detail/${_id}`)}
                 variant="contained"
                 style={{
                   backgroundColor: "rgb(36 24 64)",

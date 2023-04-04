@@ -10,7 +10,7 @@ import { useCart } from "../../context/CartContext.js";
 import { Box } from "@mui/system";
 
 export default function ItemGrid({ item }) {
-  const { name, thumbnail, price, id, stock } = item;
+  const { name, thumbnail, price, _id, stock } = item;
   const [buttonPopup, setButtonPopup] = useState(false);
   const [itemModal, setItemModal] = useState();
   const { addItem, cart } = useCart();
@@ -28,7 +28,7 @@ export default function ItemGrid({ item }) {
 
   const onAdd = () => {
     let purchase = {
-      id,
+      _id,
       name,
       price,
       stock,
@@ -40,7 +40,7 @@ export default function ItemGrid({ item }) {
   };
 
   const stockLimit = () => {
-    const found = cart.find((prod) => prod.id === id);
+    const found = cart.find((prod) => prod._id === _id);
     if (found) {
       return found.stock - found.quantity;
     } else {

@@ -28,7 +28,7 @@ export default function ItemCarrousel({ item }) {
 
   const onAdd = () => {
     let purchase = {
-      id,
+      _id,
       name,
       price,
       stock,
@@ -40,7 +40,7 @@ export default function ItemCarrousel({ item }) {
   };
 
   const stockLimit = () => {
-    const found = cart.find((prod) => prod.id === id);
+    const found = cart.find((prod) => prod._id === _id);
     if (found) {
       return found.stock - found.quantity;
     } else {

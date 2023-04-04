@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 export const CartContext = createContext();
 
@@ -14,10 +14,10 @@ export const CartProvider = ({ children }) => {
   // }, []);
 
   const addItem = (item) => {
-    const existInCart = cart.find((prod) => prod.id === item.id);
+    const existInCart = cart.find((prod) => prod._id === item._id);
     if (existInCart) {
       const updateCart = cart.map((prod) => {
-        if (prod.id === item.id && prod.quantity < prod.stock) {
+        if (prod._id === item._id && prod.quantity < prod.stock) {
           return { ...prod, quantity: prod.quantity + item.quantity };
         } else {
           return prod;
@@ -33,12 +33,12 @@ export const CartProvider = ({ children }) => {
     return 1;
   };
 
-  const removeItem = (id) => {
-    setCart(cart.filter((prod) => prod.id !== id));
+  const removeItem = (_id) => {
+    setCart(cart.filter((prod) => prod._id !== _id));
   };
 
-  const isInCart = (id) => {
-    return cart.some((prod) => prod.id === id);
+  const isInCart = (_id) => {
+    return cart.some((prod) => prod._id === _id);
   };
 
   const cartQuantity = () => {
@@ -59,7 +59,7 @@ export const CartProvider = ({ children }) => {
 
   const sumItem = (item) => {
     const updateItem = cart.map((prod) => {
-      if (prod.id === item.id && prod.quantity < item.stock) {
+      if (prod._id === item._id && prod.quantity < item.stock) {
         return { ...prod, quantity: prod.quantity + 1 };
       } else {
         return prod;
@@ -70,7 +70,7 @@ export const CartProvider = ({ children }) => {
 
   const reduceItem = (item) => {
     const updateItem = cart.map((prod) => {
-      if (prod.id === item.id) {
+      if (prod._id === item._id) {
         return { ...prod, quantity: prod.quantity - 1 };
       } else {
         return prod;

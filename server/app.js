@@ -15,6 +15,7 @@ const routerAuth = require("./routes/auth.js");
 const routerAdmin = require("./routes/admin");
 const { MongoSession, MongoDBService } = require("./config/services");
 const authPassport = require("./middlewares/authPassport");
+const routerOrders = require("./routes/orders");
 
 class Server {
   constructor(modo) {
@@ -25,10 +26,13 @@ class Server {
     this.routes();
     this.views();
     websocket(io);
+    // io.listen(8080);
   }
 
   routes() {
     app.use("/api/products", routerProducts);
+    app.use("/api/products", routerProducts);
+    app.use("/api/orders", routerOrders);
     app.use("/api/cart", routerCart);
     app.use("/admin", routerAdmin);
     app.use("/auth", routerAuth);
@@ -37,8 +41,9 @@ class Server {
   middlewares(modo) {
     app.use(
       cors({
-        origin: "http://localhost:3000",
-        credentials: true,
+        // origin: "*",
+        // credentials: true,
+        // allowedHeaders: ["Content-Type"],
       })
     );
     app.use(express.json());

@@ -1,81 +1,77 @@
-
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background:#D7D6DE;
+  background: #d7d6de;
   text-align: center;
   background-image: url("https://images.unsplash.com/photo-1494228766058-1430438d10fc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80");
   background-repeat: no-repeat;
   background-position: right 50% top;
-
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-#pic{
+#pic {
   width: 100%;
   height: 65vh;
   object-fit: cover;
 }
 .css-46bh2p-MuiCardContent-root {
-  padding: 0 5px !important
+  padding: 0 5px !important;
 }
-.css-kfme34-MuiCardContent-root{
-  padding: 0px !important
-}
-
-.css-1rwt2y5-MuiButtonBase-root-MuiButton-root{
-  padding: 5px 10px
+.css-kfme34-MuiCardContent-root {
+  padding: 0px !important;
 }
 
-.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item{
-  color: white
-
+.css-1rwt2y5-MuiButtonBase-root-MuiButton-root {
+  padding: 5px 10px;
 }
 
-.css-1qw96cp{
-  padding: 0 !important
+.pro-sidebar .pro-menu .pro-menu-item > .pro-inner-item {
+  color: white;
 }
 
-.css-18zqa7g{
-  padding: 0 !important
+.css-1qw96cp {
+  padding: 0 !important;
+}
 
+.css-18zqa7g {
+  padding: 0 !important;
 }
 
 .pro-sidebar .pro-menu > ul > .pro-sub-menu > .pro-inner-list-item {
-  background-color:rgb(28 21 39);
+  background-color: rgb(28 21 39);
 }
 
-.pro-sidebar .pro-menu{
-  background-color: rgb(9 6 15)
+.pro-sidebar .pro-menu {
+  background-color: rgb(9 6 15);
 }
 
-.css-4vzbn3-MuiButtonBase-root-MuiButton-root:hover{
+.css-4vzbn3-MuiButtonBase-root-MuiButton-root:hover {
   background-color: rgb(79 36 113);
 }
 
 .css-nmn2m9-MuiGrid-root.MuiGrid-item {
-    padding-left: 34px;
+  padding-left: 34px;
 }
 
-.css-xgs5wp .MuiGrid-item{
+.css-xgs5wp .MuiGrid-item {
   padding-left: 0 !important;
 }
 
-.MuiBadge-badge, .css-106c1u2-MuiBadge-badge {
-  background-color: rgb(174 27 212) !important
+.MuiBadge-badge,
+.css-106c1u2-MuiBadge-badge {
+  background-color: rgb(174 27 212) !important;
 }
 
-.css-aqutp7-MuiGrid-root{
-  padding: 20px
+.css-aqutp7-MuiGrid-root {
+  padding: 20px;
 }
 .css-wjh20t-MuiPagination-ul {
   width: fit-content;
@@ -83,15 +79,15 @@ code {
   border-radius: 5px;
 }
 
-.css-1p5q5e5-MuiStack-root{
+.css-1p5q5e5-MuiStack-root {
   align-items: center;
 }
 
 .css-1ld3b9g-MuiGrid-root > .MuiGrid-item {
-  padding-left: 0 !important
+  padding-left: 0 !important;
 }
 
-#homepic{
+#homepic {
   /* background-image: url("https://preview.colorlib.com/theme/shionhouse/assets/img/hero/h1_hero1.png.webp"); */
   /* https://i.ibb.co/RywYP9M/Purple-Modern-Computer-Recommendation-You-Tube-Thumbnail.png */
   color: white;
@@ -100,18 +96,21 @@ code {
   background-position: right;
 }
 
-#home{
+#home {
   margin-right: 50%;
   padding-top: 3%;
   text-align-last: center;
 }
 
-#home h1, h2, h3, button{
+#home h1,
+h2,
+h3,
+button {
   text-align: left;
   padding: 2vh;
 }
 
-#home h1{
+#home h1 {
   font-size: 70px;
   text-align-last: center;
   font-weight: bolder;
@@ -123,87 +122,243 @@ code {
   padding-bottom: 30px;
 }
 
-#home h3{
+#home h3 {
   text-align: end;
   padding: 5%;
-
 }
 
-.titlehome{
+.titlehome {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-@media screen and (max-width:650px){
-  #home h3, h2{
+@media screen and (max-width: 650px) {
+  #home h3,
+  h2 {
     display: none;
   }
-  #home h1{
+  #home h1 {
     font-size: 40px;
   }
 
-  #home button{
+  #home button {
     font-size: 20px;
     padding: 0 15px;
   }
-  #homepic{
+  #homepic {
     height: 30vh;
   }
-
 }
 
 .titlealiarg:hover {
-  color: white !important
+  color: white !important;
 }
 
 .footer {
-  background-color: #D7D6DE;
+  background-color: #d7d6de;
   width: 100%;
-  box-shadow: 0 -5px 6px rgba(0,0,0,0.5);
+  box-shadow: 0 -5px 6px rgba(0, 0, 0, 0.5);
   z-index: 10000;
 }
 
-
-#whatsapp:hover{
-  color: rgb(37, 211, 102)
+#whatsapp:hover {
+  color: rgb(37, 211, 102);
 }
 
-#twitter:hover{
-  color: #1DA1F2
+#twitter:hover {
+  color: #1da1f2;
 }
 
-.fa-times:before, .fa-plus:before, .fa-minus:before{
-  color: rgb(79 36 113)
+.fa-times:before,
+.fa-plus:before,
+.fa-minus:before {
+  color: rgb(79 36 113);
 }
 
 .MuiSnackbar-anchorOriginTopRight {
   top: 60px !important;
 }
 
-#arrivals{
+#arrivals {
   position: absolute;
   z-index: 10000;
   color: white;
-  background-color: #D7D6DE;
+  background-color: #d7d6de;
   left: 20px;
   padding: 5px 10px;
   border-radius: 2px;
   font-weight: bold;
   text-shadow: 1px 1px 2px pink;
-  box-shadow:
-       inset 0 -3em 3em rgba(0,0,0,0.1),
-             0.3em 0.3em 1em rgba(0,0,0,0.3);
-  ;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 }
 
-#dividerNavbar{
+#dividerNavbar {
   height: 28px;
   width: 2px;
   align-self: center;
 }
 
-.logreg{
+.logreg {
   background-color: #ffffffed;
   border-radius: 5px;
   margin-bottom: 70px;
   padding-bottom: 50px;
+}
+
+/* ///////CHAT/////// */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+.home__container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home__container > * {
+  margin-bottom: 10px;
+}
+.home__header {
+  margin-bottom: 30px;
+}
+.username__input {
+  padding: 10px;
+  width: 50%;
+}
+.home__cta {
+  width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #607eaa;
+  color: #f9f5eb;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+.chat {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.chat__sidebar {
+  height: 100%;
+  background-color: #f9f5eb;
+  flex: 0.2;
+  padding: 20px;
+  border-right: 1px solid #fdfdfd;
+}
+.chat__main {
+  height: 100%;
+  flex: 0.8;
+}
+.chat__header {
+  margin: 30px 0 20px 0;
+}
+.chat__users > * {
+  margin-bottom: 10px;
+  color: #607eaa;
+  font-size: 14px;
+}
+.online__users > * {
+  margin-bottom: 10px;
+  color: rgb(238, 102, 102);
+  font-style: italic;
+}
+.chat__mainHeader {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f9f5eb;
+}
+.leaveChat__btn {
+  padding: 10px;
+  width: 150px;
+  border: none;
+  outline: none;
+  background-color: #d1512d;
+  cursor: pointer;
+  color: #eae3d2;
+}
+.message__container {
+  width: 100%;
+  height: 80vh;
+  background-color: #fff;
+  padding: 20px;
+  overflow-y: scroll;
+}
+
+.message__container > * {
+  margin-bottom: 10px;
+}
+.chat__footer {
+  padding: 10px;
+  background-color: #f9f5eb;
+  height: 10vh;
+}
+.form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.message {
+  width: 80%;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  outline: none;
+  padding: 15px;
+}
+.sendBtn {
+  width: 150px;
+  background-color: green;
+  padding: 10px;
+  border: none;
+  outline: none;
+  color: #eae3d2;
+  cursor: pointer;
+}
+.sendBtn:hover {
+  background-color: rgb(129, 201, 129);
+}
+.message__recipient {
+  background-color: #f5ccc2;
+  width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+}
+.message__sender {
+  background-color: rgb(194, 243, 194);
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: auto;
+  font-size: 15px;
+}
+.message__chats > p {
+  font-size: 13px;
+}
+.sender__name {
+  text-align: right;
+}
+.message__status {
+  position: fixed;
+  bottom: 50px;
+  font-size: 13px;
+  font-style: italic;
 }

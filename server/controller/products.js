@@ -63,8 +63,10 @@ async function delProducts(req, res) {
 async function postProducts(req, res) {
   try {
     const product = req.body;
+    console.log(product);
+    product.timestamp = Date.now();
     const i = await productService.postProducts(product);
-    res.status(201).json(i);
+    res.status(201).json(product);
   } catch (error) {
     console.log("Error: " + error);
     res.status(500).render("error", { error: error, layout: "error" });

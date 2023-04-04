@@ -5,13 +5,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import Login from "./components/Login/Login";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+const token = localStorage?.getItem("token");
+
 root.render(
   <>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <BrowserRouter>{token ? <App /> : <Login />} </BrowserRouter>
   </>
 );
 

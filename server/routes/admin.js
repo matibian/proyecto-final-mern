@@ -15,6 +15,14 @@ authPassport();
 //   }
 // }
 
-routerAdmin.get("/config", auth, routes.getConfig);
+routerAdmin.get("/config", routes.getConfig);
+
+routerAdmin.get("/chat", routes.getChat);
+
+routerAdmin.get("/chat/:user", routes.getChatUser);
+
+routerAdmin.get("/", routes.getAdmin);
+
+routerAdmin.get("/productos", routes.getAdminProductos);
 
 module.exports = routerAdmin;

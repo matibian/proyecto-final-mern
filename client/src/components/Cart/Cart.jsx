@@ -33,7 +33,7 @@ export default function Cart() {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      if (event.target.value === "aliarg10") {
+      if (event.target.value === "vortex") {
         descuento(true);
         event.target.value = "";
       }
@@ -166,15 +166,6 @@ export default function Cart() {
                         ))
                       ) : (
                         <>
-                          <CardMedia
-                            component="img"
-                            height="200"
-                            width="90%"
-                            image={
-                              "https://imgflip.com/s/meme/Grandma-Finds-The-Internet.jpg"
-                            }
-                            alt="img"
-                          />
                           <CardContent padding="5px">
                             <Typography
                               variant="body2"

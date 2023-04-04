@@ -14,6 +14,7 @@ switch (modo) {
     DAO = new DAOmessagesMongo();
     break;
   default:
+    console.log("chatMongo");
     DAO = new DAOmessagesMongo();
     break;
 }

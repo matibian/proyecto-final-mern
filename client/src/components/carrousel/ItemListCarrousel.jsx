@@ -2,7 +2,6 @@ import React from "react";
 import ItemCarrousel from "./ItemCarrousel";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Esqueleto from "./Esqueleto";
 
 export default function ItemListCarrousel({ items, loading }) {
   const responsive = {
@@ -23,8 +22,6 @@ export default function ItemListCarrousel({ items, loading }) {
     },
   };
 
-  const skeletonItem = [1, 2, 3, 4, 5, 6, 7];
-
   return (
     <div>
       <Carousel
@@ -35,20 +32,11 @@ export default function ItemListCarrousel({ items, loading }) {
         itemClass="carousel-item-padding-40-px"
         draggable={true}
       >
-        {
-          // loading ?
-          // skeletonItem.map((item) => (
-          //     <div key={item}>
-          //         <Esqueleto  />
-          //     </div>
-          // ))
-          // :
-          items.map((item) => (
-            <div key={item.id}>
-              <ItemCarrousel item={item} key={item.id} />
-            </div>
-          ))
-        }
+        {items.map((item) => (
+          <div key={item._id}>
+            <ItemCarrousel item={item} />
+          </div>
+        ))}
       </Carousel>
     </div>
   );

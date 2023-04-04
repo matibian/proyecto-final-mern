@@ -5,11 +5,12 @@ import { collection, getDocs } from "firebase/firestore";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 export default function SearchBar() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
-
+  const { auth } = useAuth();
   const bla = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
@@ -42,7 +43,7 @@ export default function SearchBar() {
   }));
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8080/api/products/`)
+    fetch(`http://127.0.0.1:8080/api/products/`, auth)
       .then((response) => response.json())
       .then((data) => {
         setData(data);
@@ -72,7 +73,7 @@ export default function SearchBar() {
           options={data}
           getOptionLabel={(option) => option.name}
           onChange={(event, option) => {
-            navigate(`/detail/${option.id}`);
+            navigate(`/detail/${option._id}`);
           }}
           style={{ width: "100%" }}
           renderInput={(params) => {

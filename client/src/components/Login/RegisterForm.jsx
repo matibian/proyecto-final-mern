@@ -19,7 +19,7 @@ const theme = createTheme({
   },
 });
 
-export default function RegisterForm() {
+export default function RegisterForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -138,7 +138,7 @@ export default function RegisterForm() {
             <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link
-                  to="/login"
+                  onClick={props.onSwitchComponent}
                   variant="body2"
                   marginBottom="20px"
                   style={{ color: "rgb(201 160 155)" }}

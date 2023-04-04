@@ -11,7 +11,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { regexPassword } from "../utils";
+import { regexPassword } from "../../utils";
 import { Stack } from "@mui/system";
 
 const theme = createTheme({
@@ -22,9 +22,8 @@ const theme = createTheme({
   },
 });
 
-export default function LoginForm() {
+export default function LoginForm(props) {
   const navigate = useNavigate();
-  const [user, setUser] = React.useState("");
 
   const [values, setValues] = React.useState({
     email: "",
@@ -80,16 +79,31 @@ export default function LoginForm() {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => setUser(res))
+      .then((res) => res.json())
       .catch((error) => console.error("Error:", error))
-      .then((response) => {
-        if (!user) {
-          setErrors({ ...errors, email: true });
-        }
+      .then((res) => {
+        // if (!user) {
+        //   setErrors({ ...errors, email: true });
+        // }
+        const user = {
+          name: res.user.name,
+          phone: res.user.phone,
+          avatar: res.user.avatar,
+          dir: res.user.dir,
+          email: res.user.email,
+        };
+        console.log(user);
+        localStorage.setItem("token", res.user.token);
+        localStorage.setItem("uuid", res.user.uuid);
+        localStorage.setItem("user", JSON.stringify(user));
 
-        if (user) {
-          navigate("/");
-        }
+        window.location.reload();
+
+        // if (user) {
+        //   console.log(res);
+        //   console.log("bien");
+        navigate("/");
+        // }
       });
   };
 
@@ -162,7 +176,7 @@ export default function LoginForm() {
               <Grid container justifyContent="flex-end">
                 <Grid item>
                   <Link
-                    to="/register"
+                    onClick={props.onSwitchComponent}
                     variant="body2"
                     marginBottom="20px"
                     style={{ color: "rgb(201 160 155)" }}

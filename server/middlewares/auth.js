@@ -4,7 +4,7 @@ const UserModel = require("../models/mongoModels/usersModel");
 const { default: mongoose } = require("mongoose");
 const User = mongoose.model("users", UserModel);
 
-const auth = asyncHandler(async (req, res, next) => {
+const auth = async (req, res, next) => {
   let token;
 
   if (
@@ -19,19 +19,14 @@ const auth = asyncHandler(async (req, res, next) => {
 
       // Get user from the token
       req.user = await User.findById(decoded.id).select("-password");
-
       next();
     } catch (error) {
-      console.log(error);
-      res.status(401);
-      throw new Error("Not authorized");
+      res.status(401).send("Error");
+    }
+    if (!token) {
+      res.status(401).send("Error");
     }
   }
-
-  if (!token) {
-    res.status(401);
-    throw new Error("Not authorized, no token");
-  }
-});
+};
 
 module.exports = { auth };

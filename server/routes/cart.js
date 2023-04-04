@@ -1,6 +1,5 @@
 const express = require("express");
 const { Router } = express;
-// const authPassport = require("../middlewares/authPassport");
 const routerCart = new Router();
 const routes = require("../controller/cart");
 
@@ -13,8 +12,6 @@ routerCart.post("/prod/:id", auth, routes.postProdCart);
 routerCart.put("/add/:id", auth, routes.postAdd);
 
 routerCart.put("/subs/:id", auth, routes.postSubs);
-
-routerCart.delete("/:id", auth, routes.postDelProductCart);
 
 routerCart.delete("/:id", auth, routes.postDelProductCart);
 

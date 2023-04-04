@@ -1,5 +1,6 @@
 const DAOcart = require("../models/DAOs/DAOcart");
 const DAOusers = require("../models/DAOs/DAOusers");
+const DAOcheckout = require("../models/DAOs/DAOcheckout");
 
 // const ContUsers = new ContainerUsers();
 

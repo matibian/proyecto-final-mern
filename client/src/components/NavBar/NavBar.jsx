@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -17,8 +17,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { Avatar, Divider, Tooltip } from "@mui/material";
+import { useUser } from "../../context/UserContext";
 
-export default function NavBar() {
+export default function NavBar(avatar) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -26,13 +27,13 @@ export default function NavBar() {
     setAnchorElNav(event.currentTarget);
   };
 
+  const { user } = useUser();
+
   const handleLogout = () => {
-    fetch("http://127.0.0.1:8080/auth/logout")
-      .then((res) => {
-        res.json();
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+    localStorage.removeItem("token");
+    localStorage.removeItem("uuid");
+    localStorage.removeItem("user");
+    window.location.reload();
   };
 
   const navigate = useNavigate();
@@ -141,9 +142,6 @@ export default function NavBar() {
               <MenuItem onClick={() => navigate(`category/Accesorios`)}>
                 <Typography textAlign="center">Accesorios</Typography>
               </MenuItem>
-              <MenuItem onClick={() => navigate(`/mis_pedidos`)}>
-                <Typography textAlign="center">MIS PEDIDOS</Typography>
-              </MenuItem>
             </Menu>
             <Link to="/">
               <Logo sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
@@ -187,12 +185,6 @@ export default function NavBar() {
               flexItem
               className="dividerNavbar"
             />
-            <Button
-              onClick={() => navigate(`/mis_pedidos`)}
-              sx={{ my: 2, color: "white", display: "block", fontSize: "12px" }}
-            >
-              ||MIS PEDIDOS||
-            </Button>
           </Box>
           <Search>
             <SearchIconWrapper>
@@ -208,7 +200,7 @@ export default function NavBar() {
           <Box sx={{ flexGrow: 0, margin: "0 20px" }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar src={user.avatar} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -227,11 +219,11 @@ export default function NavBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              <MenuItem onClick={() => navigate(`/login`)}>
+              {/* <MenuItem onClick={() => navigate(`/login`)}>
                 <Typography textAlign="center">Login</Typography>
-              </MenuItem>
+              </MenuItem> */}
 
-              <MenuItem onClick={() => navigate(`/prueba`)}>
+              <MenuItem onClick={() => navigate(`/cuenta`)}>
                 <Typography textAlign="center">Cuenta</Typography>
               </MenuItem>
 

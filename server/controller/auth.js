@@ -52,13 +52,19 @@ const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   // Check for user email
   const user = await User.findOne({ email });
-  console.log(user);
 
   if (user && (await bcrypt.compare(password, user.password))) {
     token = generateToken(user._id);
-    req.session.user = { uuid: "user-" + user._id };
+    const userdata = {
+      uuid: user._id,
+      name: user.name,
+      phone: user.phone,
+      email: user.email,
+      dir: user.dir,
+      avatar: user.avatar,
+    };
+    req.session.user = userdata;
     req.session.user.token = token;
-    console.log(req.session);
     req.session.save((err) => {
       if (err) {
         console.log(err);
@@ -74,13 +80,15 @@ const loginUser = asyncHandler(async (req, res) => {
 });
 
 const getUser = async (req, res) => {
-  res.status(200).json(req.user);
+  const _id = req.body.uuid;
+  const user = await User.findOne({ _id });
+  res.status(200).json(user);
 };
 
 // Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: "1h",
+    expiresIn: "2h",
   });
 };
 
