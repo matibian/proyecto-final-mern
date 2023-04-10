@@ -1,55 +1,58 @@
-const DAO = require("../models/DAOs/DAOproducts/factoryDAOSproducts");
-const productService = require("../service/admin");
+const adminService = require("../service/admin");
+const { logger } = require("../middlewares/logger.js");
 
-async function getAdmin(req, res) {
-  try {
-    const config = await productService.getConfigs();
-    console.log(config);
-    res.status(200).render("index", { config: config, layout: "index" });
-  } catch (error) {
-    console.log("Error: " + error);
-    res
-      .status(500)
-      .render("error", { error: error, status: 500, layout: "error" });
-  }
-}
+require("dotenv");
 
 async function getAdminProductos(req, res) {
   try {
-    const productos = await DAO.getAll();
+    const productos = await adminService.getAdminProductos();
     res
       .status(200)
       .render("productos", { products: productos, layout: "productos" });
   } catch (error) {
-    res.json({ error: true, msj: "error" });
+    logger.error(error);
+    res.status(500).json({ error: true, msj: "error" });
   }
 }
 
-async function getChat(req, res) {
+async function getLogin(req, res) {
   try {
-    res.status(200).render("chat", { layout: "chat" });
+    const host = process.env.HOST;
+    res.status(200).render("login", { host: host, layout: "login" });
   } catch (error) {
-    res.json({ error: true, msj: "error" });
+    logger.error(error);
+    res.status(500).json({ error: true, msj: "error" });
+  }
+}
+
+async function getChats(req, res) {
+  try {
+    let chats = await adminService.getChats();
+    res.status(200).render("chat", { chats: chats, layout: "chat" });
+  } catch (error) {
+    logger.error(error);
+    res.status(500).json({ error: true, msj: "error" });
   }
 }
 
 async function getChatUser(req, res) {
   try {
-    res.status(200).render("chat", { layout: "chat" });
+    const user = req.params.user;
+    res.status(200).render("chatUser", { user: user, layout: "chatUser" });
   } catch (error) {
-    res.json({ error: true, msj: "error" });
+    logger.error(error);
+    res.status(500).json({ error: true, msj: "error" });
   }
 }
 
 async function getConfig(req, res) {
   try {
-    const config = await productService.getConfigs();
-    console.log(config);
+    const config = await adminService.getConfig();
     res
       .status(200)
       .render("config", { config: config, status: 500, layout: "config" });
   } catch (error) {
-    console.log("Error: " + error);
+    logger.error(error);
     res
       .status(500)
       .render("error", { error: error, status: 500, layout: "error" });
@@ -57,9 +60,9 @@ async function getConfig(req, res) {
 }
 
 module.exports = {
-  getChat,
+  getLogin,
   getChatUser,
+  getChats,
   getConfig,
-  getAdmin,
   getAdminProductos,
 };

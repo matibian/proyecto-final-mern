@@ -1,29 +1,28 @@
-const DAOmessages = require("../models/DAOs/DAOmessajes/factoryDAOSmessages");
+const DAOmessages = require("../models/DAOs/DAOmessagesMongo");
 const moment = require("moment");
-const timestamp = moment().format("lll");
+moment.locale("es");
+const { logger } = require("../middlewares/logger");
 
 async function websocket(io) {
   io.on("connection", async (socket) => {
-    console.log(`Nuevo cliente conectado ${socket.id}`);
-
-    socket.emit("msg-list", await DAOmessages.getAll("matubianchi@gmail.com"));
+    socket.on("user", async (data) => {
+      socket.emit("msg-list", await DAOmessages.getAll(data));
+    });
 
     socket.on("msg", async (data) => {
       try {
-        console.log(data);
         let username = data.username;
         await DAOmessages.save({
-          socketid: socket.id,
           username: username,
+          socketid: socket.id,
+          from: data.from,
           message: data.message,
-          timestamp: timestamp,
+          timestamp: moment().format("D MMM YY, h:mm"),
         });
 
-        console.log("Se recibio un msg nuevo", "msg:", data.message);
-
         io.emit("msg-list", await DAOmessages.getAll(username));
-      } catch (e) {
-        console.log(err);
+      } catch (err) {
+        logger.error(err);
       }
     });
   });

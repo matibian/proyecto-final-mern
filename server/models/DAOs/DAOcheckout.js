@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const ordersModel = require("../mongoModels/ordersModel");
+const { logger } = require("../../middlewares/logger");
 
 class DAOcheckouts {
   constructor() {
@@ -8,35 +9,61 @@ class DAOcheckouts {
   }
 
   async getAll() {
-    const products = await this.model.find({}).lean();
-    return products;
+    try {
+      const products = await this.model.find({}).lean();
+      return products;
+    } catch (error) {
+      logger.error(error);
+    }
   }
 
   async save(element) {
-    const response = await this.model.create(element);
-    return response;
+    try {
+      const response = await this.model.create(element);
+      return response;
+    } catch (error) {
+      logger.error(error);
+    }
   }
 
   async count() {
-    const response = await this.model.countDocuments();
-    return response;
+    try {
+      const response = await this.model.countDocuments();
+      return response;
+    } catch (error) {
+      logger.error(error);
+    }
   }
 
   async getByEmail(email) {
-    const response = await this.model.find({ email }).lean();
-    return response;
+    try {
+      const response = await this.model.find({
+        "buyer.mail": `${email}`,
+      });
+      return response;
+    } catch (error) {
+      logger.error(error);
+    }
   }
 
   async deleteById(id) {
-    const response = await this.model.findByIdAndDelete(id);
-    return response;
+    try {
+      const response = await this.model.findByIdAndDelete(id);
+      return response;
+    } catch (error) {
+      logger.error(error);
+    }
   }
 
   async updateById(id, newData) {
-    const response = await this.model.findByIdAndUpdate(id, newData, {
-      new: true,
-    });
-    return response;
+    try {
+      const response = await this.model.findByIdAndUpdate(id, newData, {
+        new: true,
+      });
+      return response;
+    } catch (error) {
+      logger.error(error);
+    }
   }
 }
 

@@ -1,8 +1,6 @@
 const express = require("express");
-const passport = require("passport");
 const session = require("express-session");
 const { engine } = require("express-handlebars");
-const { errorHandler } = require("./middlewares/errorMiddleware");
 const app = express();
 const cors = require("cors");
 const config = require("./config/config");
@@ -14,7 +12,6 @@ const routerProducts = require("./routes/products");
 const routerAuth = require("./routes/auth.js");
 const routerAdmin = require("./routes/admin");
 const { MongoSession, MongoDBService } = require("./config/services");
-const authPassport = require("./middlewares/authPassport");
 const routerOrders = require("./routes/orders");
 
 class Server {
@@ -26,11 +23,9 @@ class Server {
     this.routes();
     this.views();
     websocket(io);
-    // io.listen(8080);
   }
 
   routes() {
-    app.use("/api/products", routerProducts);
     app.use("/api/products", routerProducts);
     app.use("/api/orders", routerOrders);
     app.use("/api/cart", routerCart);
@@ -39,24 +34,11 @@ class Server {
   }
 
   middlewares(modo) {
-    app.use(
-      cors({
-        // origin: "*",
-        // credentials: true,
-        // allowedHeaders: ["Content-Type"],
-      })
-    );
+    app.use(cors());
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
-    app.use(errorHandler);
-
-    if (modo !== "dev") {
-      MongoDBService();
-      app.use(session(MongoSession));
-      // authPassport();
-      // app.use(passport.initialize());
-      // app.use(passport.session());
-    }
+    MongoDBService();
+    app.use(session(MongoSession));
   }
 
   views() {
@@ -75,9 +57,8 @@ class Server {
   }
   listen() {
     httpServer.listen(config.PORT, () =>
-      console.log(`App listening on http://${config.HOST}:${config.PORT}`)
+      console.log(`App listening on http://${config.HOST}`)
     );
   }
 }
-
 module.exports = Server;

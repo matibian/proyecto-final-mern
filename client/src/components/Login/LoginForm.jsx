@@ -91,19 +91,15 @@ export default function LoginForm(props) {
           avatar: res.user.avatar,
           dir: res.user.dir,
           email: res.user.email,
+          admin: res.user.admin,
         };
-        console.log(user);
         localStorage.setItem("token", res.user.token);
         localStorage.setItem("uuid", res.user.uuid);
         localStorage.setItem("user", JSON.stringify(user));
 
         window.location.reload();
 
-        // if (user) {
-        //   console.log(res);
-        //   console.log("bien");
         navigate("/");
-        // }
       });
   };
 

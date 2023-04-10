@@ -1,4 +1,6 @@
+const { faker } = require("@faker-js/faker");
 const productos = require("../../DB/productosMem");
+const { logger } = require("../../../middlewares/logger");
 
 class DAOproductsMem {
   constructor() {}
@@ -9,41 +11,53 @@ class DAOproductsMem {
 
   save = async (producto) => {
     try {
-      const id =
-        producto.length === 0 ? 1 : producto[producto.length - 1].id + 1;
-
-      producto.id = id;
-
-      productos.push(producto);
-
-      console.log(`Se salvo el mensaje con el id ${id}`);
+      const prod = producto;
+      prod._id = Number(faker.random.numeric() + 50);
+      productos.push(prod);
+      return prod;
     } catch (error) {
-      console.log(`Ocurrio un error: ${error}`);
+      logger.error(error);
     }
   };
 
   getByCategory = async (category) => {
-    const list = await productos.filter((p) => p.category === category);
-    return list;
+    try {
+      const list = await productos.filter((p) => p.category === category);
+      return list;
+    } catch (error) {
+      logger.error(error);
+    }
   };
 
-  getById = async (id) => {
-    const producto = await productos.find((p) => p.id === id);
-    return producto;
+  getById = async (_id) => {
+    try {
+      const producto = await productos.filter((p) => p._id === _id);
+      return producto[0];
+    } catch (error) {
+      logger.error(error);
+    }
   };
 
-  deleteById = async (id) => {
-    productos.filter((p) => p.id !== id);
-    return true;
+  deleteById = async (_id) => {
+    try {
+      productos.filter((p) => p._id !== _id);
+      return true;
+    } catch (error) {
+      logger.error(error);
+    }
   };
 
-  updateById = async (id, newData) => {
-    const index = array.findIndex((item) => item.id === id);
-    if (index !== -1) {
-      array[index] = { ...array[index], ...newData };
-      return array[index];
-    } else {
-      return null;
+  updateById = async (_id, newData) => {
+    try {
+      const index = array.findIndex((item) => item._id === _id);
+      if (index !== -1) {
+        array[index] = { ...array[index], ...newData };
+        return array[index];
+      } else {
+        return null;
+      }
+    } catch (error) {
+      logger.error(error);
     }
   };
 }

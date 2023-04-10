@@ -5,14 +5,14 @@ const routes = require("../controller/cart");
 
 const { auth } = require("../middlewares/auth");
 
-routerCart.get("/", auth, routes.getCart);
+routerCart.get("/:id", routes.getCart);
 
-routerCart.post("/prod/:id", auth, routes.postProdCart);
+routerCart.post("/prod/:id", routes.postProdCart);
 
 routerCart.put("/add/:id", auth, routes.postAdd);
 
 routerCart.put("/subs/:id", auth, routes.postSubs);
 
-routerCart.delete("/:id", auth, routes.postDelProductCart);
+routerCart.delete("/prod/:userid/:prodid", routes.deleteProductCart);
 
 module.exports = routerCart;

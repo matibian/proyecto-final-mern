@@ -5,15 +5,23 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const auth = {
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
+  };
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("uuid");
+    window.location.reload();
   };
 
   return (
     <AuthContext.Provider
       value={{
         auth,
+        logout,
       }}
     >
       {children}

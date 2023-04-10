@@ -8,7 +8,7 @@ let idGen;
 const generatePost = () => {
   post = {
     name: faker.commerce.product(),
-    // id: Number(faker.random.numeric() + 50),
+    // _id: Number(faker.random.numeric() + 50),
     timestamp: new Date().getTime(),
     price: Math.random() * 1000,
     thumbnail: faker.image.fashion(),
@@ -58,7 +58,6 @@ describe("Prueba de los endpoints de Productos", () => {
         "timestamp"
       );
       expect(post.name).to.eql(res.body.name);
-      expect(post.id).to.eql(res.body.id);
       expect(post.thumbnail).to.eql(res.body.thumbnail);
       expect(post.price).to.eql(res.body.price);
     });

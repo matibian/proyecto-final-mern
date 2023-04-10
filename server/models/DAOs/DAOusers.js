@@ -9,7 +9,7 @@ class DAOusers {
 
   async getAll(username) {
     if (username) {
-      const user = await this.model.findOne({ user: username }).lean();
+      const user = await this.model.findOne({ username: username }).lean();
       return user;
     } else {
       return "usuario no encontrado";

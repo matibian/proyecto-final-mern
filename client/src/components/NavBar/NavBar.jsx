@@ -18,10 +18,12 @@ import { useNavigate } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import { Avatar, Divider, Tooltip } from "@mui/material";
 import { useUser } from "../../context/UserContext";
+import { useAuth } from "../../context/AuthContext";
 
 export default function NavBar(avatar) {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const { logout } = useAuth();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -30,10 +32,7 @@ export default function NavBar(avatar) {
   const { user } = useUser();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("uuid");
-    localStorage.removeItem("user");
-    window.location.reload();
+    logout();
   };
 
   const navigate = useNavigate();

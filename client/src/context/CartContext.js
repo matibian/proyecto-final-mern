@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { useLocalStorage } from "../useLocalStorage";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useLocalStorage("cart", []);
   const [envio, setEnvio] = useState(0);
   const [discount, setDiscount] = useState(false);
 
@@ -30,7 +31,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const clear = () => {
-    return 1;
+    setCart([]);
   };
 
   const removeItem = (_id) => {

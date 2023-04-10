@@ -13,6 +13,7 @@ export default function ItemDetailContainer() {
     fetch(`http://127.0.0.1:8080/api/products/id/` + id, auth)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         setProductDetail(data);
       })
       .then(setLoading(true))

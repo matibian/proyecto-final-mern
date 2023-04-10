@@ -15,34 +15,31 @@
                   <div class="card-body">
   <form 
     {{!-- onsubmit="return false"  --}}
-    action="/login"
+    action= "{{host}}/auth/login"
     method="post"
     class="d-flex align-items-center flex-column">
     <div class="mb-3">
         <input
         type="text"
-        id="username"
-        placeholder="Usuario"
-        name="username"
+        id="email"
+        placeholder="Email"
+        name="email"
         />
     </div>
     <div class="mb-3">
         <input
-        type="text"
+        type="password"
+        autocomplete="password"
         id="password"
         placeholder="Contraseña"
         name="password"
         />
     </div>
+    <input type="hidden" name="login" value="admin" />
     <button 
         type="submit" 
-        {{!-- onclick="login()"  --}}
         class="btn btn-secondary">Login</button>
     </form>
-                <b class="faltareg" style="text-align-last: center;">
-                    <a class="nav-link" href="./registro">No estas registrad@?</a>
-                    
-                </b>
 </div>
 </div>
 </div>

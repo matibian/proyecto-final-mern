@@ -9,23 +9,27 @@ export default function ItemListContainer() {
   const [loading, setLoading] = useState(false);
   const { category } = useParams();
   const [error, setError] = useState(false);
-  const { auth } = useAuth();
+  const { logout } = useAuth();
 
   //firebase
 
   useEffect(() => {
     setLoading(true);
 
-    fetch(
-      `http://127.0.0.1:8080/api/products/${category ? category : ""}`,
-      auth
-    )
+    fetch(`http://127.0.0.1:8080/api/products/${category ? category : ""}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    })
       .then((response) => response.json())
       .then((data) => {
         setItems(data);
       })
       .then(setLoading(true))
-      .catch((err) => setError(err))
+      .catch((err) => {
+        setError(err);
+        logout();
+      })
       .finally(() => setLoading(false));
   }, [category]);
 

@@ -2,7 +2,7 @@ let productos = [
   {
     name: "Bufanda",
     price: 3000,
-    id: "FRYfOaUy7XNIjGAGFXCE",
+    _id: "FRYfOaUy7XNIjGAGFXCE",
     category: "Accesorios",
     thumbnail: "https://static.dafiti.com.ar/p/todomoda-7128-706429-1-zoom.jpg",
     nov: true,
@@ -15,7 +15,7 @@ let productos = [
   {
     name: "Camisa Blanca",
     price: 20000,
-    id: "G4uOVGnlsbVZHhfwAM4w",
+    _id: "G4uOVGnlsbVZHhfwAM4w",
     category: "Camisas",
 
     thumbnail:
@@ -30,7 +30,7 @@ let productos = [
   {
     name: "Chalina",
     price: 10000,
-    id: "d02q73EtlpXnv7pMreOd",
+    _id: "d02q73EtlpXnv7pMreOd",
     category: "Accesorios",
     thumbnail:
       "https://www.mendoza.gov.ar/wp-content/uploads/sites/49/2019/04/Tejidos-EL-TELAR-DE-ALE-8.jpg",
@@ -44,7 +44,7 @@ let productos = [
   {
     name: "Camisa",
     price: 10000,
-    id: "d02q73EtlpXnv7pMreOd",
+    _id: "d02q734sdftlpXnv7pMreOd",
     category: "Camisas",
     thumbnail:
       "http://d3ugyf2ht6aenh.cloudfront.net/stores/103/133/products/srmc-c1-66780c91670468dd9f15867816529784-640-0.jpg",
@@ -58,7 +58,7 @@ let productos = [
   {
     name: "Pantalon Blanco",
     price: 13000,
-    id: "jtDtWtNI8FFcoQvUeV33",
+    _id: "jtDtWtNI8FFcoQvUeV33",
     category: "Pantalones",
     thumbnail: "https://static.dafiti.com.ar/p/portsaid-1853-550669-1-zoom.jpg",
     nov: true,

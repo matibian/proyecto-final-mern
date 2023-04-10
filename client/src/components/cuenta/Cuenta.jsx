@@ -9,13 +9,11 @@ import {
   MDBTypography,
 } from "mdb-react-ui-kit";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
 import Chat from "./Chat";
 import MyOrders from "./MyOrders";
 
 export default function Cuenta() {
-  const navigate = useNavigate();
   const { user } = useUser();
 
   return (
@@ -89,11 +87,8 @@ export default function Cuenta() {
                     </div>
                   </MDBCol>
                   <MDBCol lg="4" className="bg-grey">
-                    <div className="p-5">
-                      <MDBTypography
-                        tag="h3"
-                        className="fw-bold mb-5 mt-2 pt-1"
-                      >
+                    <div className="p-3">
+                      <MDBTypography tag="h3" className="fw-bold mt-2 pt-1">
                         Chat
                       </MDBTypography>
 

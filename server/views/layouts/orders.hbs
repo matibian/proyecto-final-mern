@@ -6,8 +6,8 @@
     {{>navbar}}
     {{!-- {{>navbar}} --}}
     <br>
-
-<table class="table align-content-center" style="text-align: center">
+<div height="75vh">
+<table class="table align-content-center" style="text-align: center; margin-bottom: 20%">
     <thead>
       <tr>
         <th scope="col">Numero de orden</th>
@@ -36,14 +36,15 @@
           <td>${{this.total}}</td>
         </tr>
         {{/each}}
+        </tbody>
+      </table>
       {{else}}
       </tbody>
       </table>
         No hay ordenes todavía
       {{/if}}
-    </div>
-  </div>
-</div>
+      </div>
+
 
     <script src="../index.js"></script>
 

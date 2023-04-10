@@ -20,28 +20,28 @@ export default function Footer() {
             </h5>
             <ul style={{ listStyleType: "none" }}>
               <li
-                onClick={() => navigate(`category/Componentes`)}
+                onClick={() => navigate(`category/Camisas`)}
                 style={{ cursor: "pointer" }}
               >
-                Componentes
+                Camisas
               </li>
               <li
-                onClick={() => navigate(`category/Almacenamiento`)}
+                onClick={() => navigate(`category/Pantalones`)}
                 style={{ cursor: "pointer" }}
               >
-                Almacenamiento
+                Pantalones
               </li>
               <li
-                onClick={() => navigate(`category/Perifericos`)}
+                onClick={() => navigate(`category/Accesorios`)}
                 style={{ cursor: "pointer" }}
               >
-                Periféricos
+                Accesorios
               </li>
               <li
-                onClick={() => navigate(`category/Tablets`)}
+                onClick={() => navigate(`category/all`)}
                 style={{ cursor: "pointer" }}
               >
-                Tablets
+                Todo
               </li>
             </ul>
           </div>

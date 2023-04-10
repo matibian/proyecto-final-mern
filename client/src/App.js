@@ -1,8 +1,8 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Footer from "./components/Footer";
 import ItemListContainerCarrousel from "./components/carrousel/ItemListContainerCarrousel";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import ItemListContainer from "./components/Grid/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 import { CartProvider } from "./context/CartContext";
@@ -11,12 +11,9 @@ import Cart from "./components/Cart/Cart";
 import CheckOut from "./components/CheckOut";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import NavBar from "./components/NavBar/NavBar";
-import OrdersPointer from "./components/Orders/OrdersPointer";
-import OrdersContainer from "./components/Orders/OrdersContainer";
 import Cuenta from "./components/cuenta/Cuenta";
 import { UserProvider } from "./context/UserContext";
 import { AuthProvider } from "./context/AuthContext";
-// import { UserProvider } from './context/userContext';
 
 const theme = createTheme({
   palette: {
@@ -54,7 +51,6 @@ export default function App() {
               />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<CheckOut />} />
-              <Route path="/mis_pedidos" element={<OrdersPointer />} />
               <Route path="/cuenta" element={<Cuenta />} />
               {/* <Route path="/mis_pedidos/:id" element={<OrdersContainer />} /> */}
             </Routes>

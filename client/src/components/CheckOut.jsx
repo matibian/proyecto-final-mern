@@ -14,7 +14,7 @@ import logo from "../images/logofashion.png";
 import { useAuth } from "../context/AuthContext";
 
 export default function CheckOut() {
-  const { auth } = useAuth();
+  const logout = useAuth();
   const { user } = useUser();
   const { cart, cartTotal, envio, clear, discount, descuento } = useCart();
   const [send, setSend] = useState(false);
@@ -29,7 +29,7 @@ export default function CheckOut() {
     setLoading(true);
   };
 
-  function finishPurchase(data) {
+  function finishPurchase() {
     let direcOrder = direccion == "" ? user.dir : direccion;
 
     let order = {
@@ -44,18 +44,22 @@ export default function CheckOut() {
       total: Number(cartTotal() + envio),
       descuento: discount ? "10%" : "NO",
     };
+
     fetch("http://127.0.0.1:8080/api/orders/checkout", {
-      method: "POST", // or 'PUT'
-      body: JSON.stringify(order), // data can be `string` or {object}!
+      method: "POST",
+      body: JSON.stringify(order),
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
       .then((res) => res.json())
-      .catch((err) => setError(err))
-      .then(({ id }) => {
-        console.log(id);
-        setIdCompra(id);
+      .catch((err) => {
+        setError(err);
+        logout();
+      })
+      .then(({ ordernumber }) => {
+        setIdCompra(ordernumber);
         clear();
         setSend(true);
         descuento(false);
@@ -214,7 +218,7 @@ export default function CheckOut() {
                     </Button>
                   ) : (
                     <Button
-                      disabled
+                      // disabled
                       variant="contained"
                       color="secondary"
                       sx={{ color: "white" }}
@@ -251,9 +255,9 @@ export default function CheckOut() {
                   <Typography
                     variant="body2"
                     color="text.primary"
-                    sx={{ fontSize: 15, fontWeight: "bold", padding: "5px" }}
+                    sx={{ fontSize: 20, fontWeight: "bold", padding: "5px" }}
                   >
-                    {!error ? "Su id de compra es " + idCompra : ""}
+                    {!error ? "Numero de orden de compra: " + idCompra : ""}
                   </Typography>
                 )}
 

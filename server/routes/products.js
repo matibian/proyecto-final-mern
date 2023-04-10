@@ -9,12 +9,13 @@ const {
   postProducts,
 } = require("../controller/products");
 const { auth } = require("../middlewares/auth");
+const { authAdmin } = require("../middlewares/admin");
 
 routerProducts.get("/", auth, getProducts);
 
-routerProducts.post("/", postProducts);
+routerProducts.post("/", authAdmin, postProducts);
 
-routerProducts.delete("/:id", delProducts);
+routerProducts.delete("/:id", authAdmin, delProducts);
 
 routerProducts.get("/id/:id", auth, getById);
 

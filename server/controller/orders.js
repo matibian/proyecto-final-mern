@@ -1,35 +1,51 @@
-const DAOcart = require("../models/DAOs/DAOcart");
-const DAOusers = require("../models/DAOs/DAOusers");
 const DAOcheckout = require("../models/DAOs/DAOcheckout");
+const ordersService = require("../service/orders");
+const logger = require("../middlewares/logger");
 
 async function postCheckout(req, res) {
   try {
     let order = req.body;
     let ordernumber = (await DAOcheckout.count()) + 1;
     order.ordernumber = ordernumber;
-    const response = await DAOcheckout.save(order);
-    res.status(200).json({ id: response._id });
+    const response = await ordersService.postCheckout(order);
+
+    res.status(200).json({ ordernumber: ordernumber });
   } catch (error) {
-    console.log("error: " + error);
+    logger.error(error);
     res.status(500);
   }
 }
 
 async function getCheckouts(req, res) {
-  let orders = await DAOcheckout.getAll();
-  res.status(200).render("orders", { orders: orders, layout: "orders" });
+  try {
+    let orders = await DAOcheckout.getAll();
+    res.status(200).render("orders", { orders: orders, layout: "orders" });
+  } catch (error) {
+    logger.error(error);
+    res.status(500);
+  }
 }
 
 async function deleteCheckout(req, res) {
-  const id = req.params.id;
-  let checkouts = await DAOcheckout.deleteById(id);
-  res.status(200).json(checkouts);
+  try {
+    const id = req.params.id;
+    let checkouts = await ordersService.deleteCheckout(id);
+    res.status(200).json(checkouts);
+  } catch (error) {
+    logger.error(error);
+    res.status(500);
+  }
 }
 
 async function getEmail(req, res) {
-  const email = req.params.email;
-  let orders = await DAOcheckout.getByEmail({ email });
-  res.status(200).json(orders);
+  try {
+    const email = req.params.email;
+    let orders = await ordersService.getEmail(email);
+    res.status(200).json(orders);
+  } catch (error) {
+    logger.error(error);
+    res.status(500);
+  }
 }
 
 module.exports = {

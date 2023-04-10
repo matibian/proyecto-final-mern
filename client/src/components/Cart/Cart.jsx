@@ -111,7 +111,7 @@ export default function Cart() {
                                   className="px-2"
                                   onClick={
                                     item.quantity === 1
-                                      ? () => removeItem(item.id)
+                                      ? () => removeItem(item._id)
                                       : () => reduceItem(item)
                                   }
                                 >
@@ -157,7 +157,7 @@ export default function Cart() {
                                   <MDBIcon
                                     fas
                                     icon="times"
-                                    onClick={() => removeItem(item.id)}
+                                    onClick={() => removeItem(item._id)}
                                   />
                                 </MDBBtn>
                               </MDBCol>
@@ -166,13 +166,26 @@ export default function Cart() {
                         ))
                       ) : (
                         <>
+                          <CardMedia
+                            component="img"
+                            sx={{
+                              display: "inline",
+                              width: "40vh",
+                            }}
+                            display="flex important!"
+                            width="40vh important!"
+                            image={
+                              "https://empacarexpress.com.bo/pub/static/version1680038770/frontend/MageBig/martfury_layout02/es_ES/images/empty-cart.svg"
+                            }
+                            alt="img"
+                          />
                           <CardContent padding="5px">
                             <Typography
                               variant="body2"
                               color="text.secondary"
                               sx={{ fontSize: 30, padding: "40px 0" }}
                             >
-                              Todavía no elegiste nada
+                              No hay productos en el carrito
                             </Typography>
                           </CardContent>
                         </>

@@ -1,86 +1,128 @@
-import React, { useEffect, useRef, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { MyForm } from "./MyForm";
 import { socket } from "./Socket";
-// import { useUser } from "../../context/UserContext";
+import logo from "../../images/logofashion.png";
 
-// "undefined" means the URL will be computed from the `window.location` object
-
-// function ConnectionState({ isConnected }) {
-//   return <p>State: {"" + isConnected}</p>;
-// }
-// function ConnectionManager() {
-//   function connect() {
-//     socket.connect();
-//   }
-
-//   function disconnect() {
-//     socket.disconnect();
-//   }
-
-//   return (
-//     <>
-//       <button onClick={connect}>Connect</button>
-//       <button onClick={disconnect}>Disconnect</button>
-//     </>
-//   );
-// }
+import {
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBCard,
+  MDBCardBody,
+} from "mdb-react-ui-kit";
+import { Avatar } from "@mui/material";
 
 export default function Chat() {
-  const [isConnected, setIsConnected] = useState(socket.connected);
+  const user = JSON.parse(localStorage.getItem("user")).email;
+  const avatar = JSON.parse(localStorage.getItem("user")).avatar;
   const [msgEvents, setMsgEvents] = useState([]);
 
   useEffect(() => {
-    function onConnect() {
-      setIsConnected(true);
-    }
-
-    function onDisconnect() {
-      setIsConnected(false);
-    }
-
     function onMsgEvent(value) {
       setMsgEvents(value);
     }
 
-    socket.on("connection", onConnect);
-    socket.on("msg-list", onMsgEvent);
-
+    async function socketEmit() {
+      await socket.emit("user", `${user}`);
+      await socket.on("msg-list", onMsgEvent);
+    }
+    socketEmit();
     return () => {
-      socket.off("connect", onConnect);
-      socket.off("disconnect", onDisconnect);
       socket.off("msg", onMsgEvent);
     };
   }, []);
 
   function Events({ events }) {
     return (
-      <ul>
-        {events.map((event, index) => {
-          return (
-            <li key={index}>
-              <div className="p-email">
-                <span sx="font-weight: bolder; color: blue">
-                  {event.username}
-                </span>
-                <span style={{ color: "red" }}>
-                  [{event.timestamp}] :
-                  <div sx="color:green">{event.message}</div>
-                </span>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      <>
+        <MDBContainer
+          fluid
+          style={{
+            backgroundColor: "#eee",
+            paddingTop: 0,
+            borderRadius: "60%",
+          }}
+        >
+          <MDBRow className="d-flex justify-content-center">
+            <MDBCol md="12" lg="12" xl="12">
+              <MDBCard>
+                <MDBCardBody
+                  style={{
+                    maxHeight: "51vh",
+                    overflow: "auto",
+                  }}
+                >
+                  {events?.map((event, index) => {
+                    return (
+                      <>
+                        {event.from == "Vortex" ? (
+                          <>
+                            <div className="d-flex justify-content-between">
+                              <p className="small mb-1">Vortex</p>
+                              <p className="small mb-1 text-muted">
+                                {event.timestamp}
+                              </p>
+                            </div>
+                            <div className="d-flex flex-row justify-content-start">
+                              <img
+                                src={logo}
+                                alt="avatar vortex"
+                                style={{ width: "45px", height: "100%" }}
+                              />
+                              <div>
+                                <p
+                                  className="small p-2 ms-3 mb-3 text-white rounded-3"
+                                  style={{ "background-color": "#c9a09b" }}
+                                >
+                                  {event.message}
+                                </p>
+                              </div>
+                            </div>
+                          </>
+                        ) : (
+                          <>
+                            <div className="d-flex justify-content-between">
+                              <p className="small mb-1 text-muted">
+                                {event.timestamp}
+                              </p>
+                              <p className="small mb-1">Vos</p>
+                            </div>
+                            <div
+                              className={
+                                event.from === "Vortex"
+                                  ? "d-flex flex-row justify-content-start"
+                                  : "d-flex flex-row justify-content-end mb-2 pt-1"
+                              }
+                            >
+                              <div>
+                                <p
+                                  className="small p-2 me-3 mb-3 text-white rounded-3"
+                                  style={{ "background-color": "#5b5d1b" }}
+                                >
+                                  {event.message}
+                                </p>
+                              </div>
+                              <Avatar src={avatar} />
+                            </div>
+                          </>
+                        )}
+                        <hr className="my-2" />
+                      </>
+                    );
+                  })}
+                </MDBCardBody>
+                <MyForm />
+              </MDBCard>
+            </MDBCol>
+          </MDBRow>
+        </MDBContainer>
+      </>
     );
   }
 
   return (
     <div className="App">
-      {/* <ConnectionState isConnected={isConnected} /> */}
       <Events events={msgEvents} />
-      {/* <ConnectionManager /> */}
-      <MyForm />
     </div>
   );
 }

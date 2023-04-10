@@ -1,3 +1,0 @@
-sudo mongod --dbpath "/Users/Mati/Documents/Programacion/Coderhouse/BackEnd/mongoserver"
-
-redis-server

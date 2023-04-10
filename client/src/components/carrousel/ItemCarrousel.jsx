@@ -1,16 +1,13 @@
-import React from "react";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { Button, IconButton, Snackbar, Tooltip } from "@mui/material";
-import { useCart } from "../../context/CartContext.js";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useCart } from "../../context/CartContext.js";
 
 export default function ItemCarrousel({ item }) {
-  const { name, thumbnail, price, id, _id, stock } = item;
+  const { name, thumbnail, price, _id, id, stock } = item;
   const navigate = useNavigate();
   const { cart, addItem } = useCart();
 
@@ -58,22 +55,7 @@ export default function ItemCarrousel({ item }) {
       }}
     >
       <>
-        {/* <CardMedia
-                    component="thumbnail"
-                    height="75"
-                    width="90%"
-                    sx={{ objectFit: "scale-down"}}
-                    // image={thumbnail}
-                    // alt="thumbnail"
-                /> */}
-        <CardContent padding="5px">
-          {/* <Typography variant="body2" color="text.secondary" sx={{ fontSize: 12, fontWeight: "bold", padding: "5px" }} >
-                        {name}
-                    </Typography>
-                    <Typography gutterBottom variant="h6" component="div" marginBottom="0px">
-                        ${price.toLocaleString('de-DE')}
-                    </Typography> */}
-        </CardContent>
+        <CardContent padding="5px"></CardContent>
         <CardContent
           sx={{
             position: "absolute",

@@ -34,6 +34,7 @@ const UsuarioSchema = new mongoose.Schema({
     max: 100,
   },
   cart: { type: Array, required: false, max: 100 },
+  admin: { type: Boolean, required: false },
 });
 
 UsuarioSchema.plugin(findOrCreate);

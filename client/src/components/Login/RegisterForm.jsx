@@ -23,10 +23,40 @@ export default function RegisterForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const user = {
+      name: data.get("name"),
       email: data.get("email"),
       password: data.get("password"),
-    });
+      dir: data.get("dir"),
+      age: data.get("age"),
+      phone: data.get("phone"),
+      avatar: data.get("avatar"),
+    };
+
+    fetch("http://127.0.0.1:8080/auth/signup", {
+      method: "POST", // or 'PUT'
+      body: JSON.stringify(user), // data can be `string` or {object}!
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .catch((error) => console.error("Error:", error))
+      .then((res) => {
+        const user = {
+          avatar: res.avatar,
+          dir: res.dir,
+          email: res.email,
+          name: res.name,
+          phone: res.phone,
+        };
+        console.log(user);
+        localStorage.setItem("token", res.token);
+        localStorage.setItem("uuid", res.uuid);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        window.location.reload();
+      });
   };
 
   return (
