@@ -38,7 +38,7 @@ export default function Chat() {
         <MDBContainer
           fluid
           style={{
-            backgroundColor: "#eee",
+            // backgroundColor: "#eee",
             paddingTop: 0,
             borderRadius: "60%",
           }}
@@ -54,7 +54,7 @@ export default function Chat() {
                 >
                   {events?.map((event, index) => {
                     return (
-                      <>
+                      <div key={event._id}>
                         {event.from == "Vortex" ? (
                           <>
                             <div className="d-flex justify-content-between">
@@ -72,7 +72,7 @@ export default function Chat() {
                               <div>
                                 <p
                                   className="small p-2 ms-3 mb-3 text-white rounded-3"
-                                  style={{ "background-color": "#c9a09b" }}
+                                  style={{ backgroundColor: "#c9a09b" }}
                                 >
                                   {event.message}
                                 </p>
@@ -97,7 +97,7 @@ export default function Chat() {
                               <div>
                                 <p
                                   className="small p-2 me-3 mb-3 text-white rounded-3"
-                                  style={{ "background-color": "#5b5d1b" }}
+                                  style={{ backgroundColor: "#5b5d1b" }}
                                 >
                                   {event.message}
                                 </p>
@@ -107,7 +107,7 @@ export default function Chat() {
                           </>
                         )}
                         <hr className="my-2" />
-                      </>
+                      </div>
                     );
                   })}
                 </MDBCardBody>

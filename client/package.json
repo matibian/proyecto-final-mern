@@ -1,6 +1,7 @@
 {
   "name": "vortex",
   "version": "0.1.0",
+  "homepage": "https://matibian.github.io/proyecto-final-client",
   "private": true,
   "dependencies": {
     "@babel/helper-define-map": "^7.18.6",

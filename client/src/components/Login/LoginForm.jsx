@@ -24,7 +24,7 @@ const theme = createTheme({
 
 export default function LoginForm(props) {
   const navigate = useNavigate();
-
+  const BASE_HOST = process.env.REACT_APP_BASE_HOST;
   const [values, setValues] = React.useState({
     email: "",
     password: "",
@@ -72,7 +72,7 @@ export default function LoginForm(props) {
     };
     event.preventDefault();
 
-    fetch("http://127.0.0.1:8080/auth/login", {
+    fetch(BASE_HOST + "/auth/login", {
       method: "POST", // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: {

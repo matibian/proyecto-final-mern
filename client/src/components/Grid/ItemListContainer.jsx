@@ -10,13 +10,13 @@ export default function ItemListContainer() {
   const { category } = useParams();
   const [error, setError] = useState(false);
   const { logout } = useAuth();
-
-  //firebase
+  const BASE_HOST = process.env.REACT_APP_BASE_HOST;
 
   useEffect(() => {
     setLoading(true);
+    console.log(BASE_HOST);
 
-    fetch(`http://127.0.0.1:8080/api/products/${category ? category : ""}`, {
+    fetch(`${BASE_HOST}/api/products/${category ? category : ""}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

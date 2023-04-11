@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function SearchBar() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
+  const BASE_HOST = process.env.REACT_APP_BASE_HOST;
 
   const StyledInputBase = styled(InputBase)(({ theme }) => ({
     color: "inherit",
@@ -25,7 +26,7 @@ export default function SearchBar() {
   }));
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8080/api/products/`, {
+    fetch(BASE_HOST + `/api/products/`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

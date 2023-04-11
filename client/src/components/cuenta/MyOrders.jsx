@@ -11,11 +11,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 export default function MyOrders({ usermail }) {
+  const BASE_HOST = process.env.REACT_APP_BASE_HOST;
   const { logout } = useAuth;
   const { user } = useUser();
   const [data, setData] = useState();
   useEffect(() => {
-    fetch("http://127.0.0.1:8080/api/orders/" + usermail, {
+    fetch(BASE_HOST + "/api/orders/" + usermail, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -42,25 +43,33 @@ export default function MyOrders({ usermail }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data
-            ? data.map((row) => (
-                <TableRow
-                  key={row._id}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell align="center" component="th" scope="row">
-                    {row.ordernumber}
-                  </TableCell>
-                  <TableCell align="center">{row.buyer.address}</TableCell>
-                  <TableCell align="center">
-                    ${row.envio.toLocaleString("de-DE")}
-                  </TableCell>
-                  <TableCell align="center">
-                    ${row.total.toLocaleString("de-DE")}
-                  </TableCell>
-                </TableRow>
-              ))
-            : "No hay pedidos todavía"}
+          {data ? (
+            data.map((row) => (
+              <TableRow
+                key={row._id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell align="center" component="th" scope="row">
+                  {row.ordernumber}
+                </TableCell>
+                <TableCell align="center">{row.buyer.address}</TableCell>
+                <TableCell align="center">
+                  ${row.envio.toLocaleString("de-DE")}
+                </TableCell>
+                <TableCell align="center">
+                  ${row.total.toLocaleString("de-DE")}
+                </TableCell>
+              </TableRow>
+            ))
+          ) : (
+            <TableRow
+              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+            >
+              <TableCell align="center" component="th" scope="row">
+                No hay pedidos todavía
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
     </TableContainer>

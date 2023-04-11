@@ -30,7 +30,6 @@ export function MyForm() {
             <MDBBtn
               color="#979797"
               style={{ paddingTop: ".55 rem", width: "100%" }}
-              button
               type="submit"
               disabled={isLoading}
             >

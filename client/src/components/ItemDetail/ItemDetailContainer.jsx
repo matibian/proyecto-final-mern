@@ -8,9 +8,10 @@ export default function ItemDetailContainer() {
   const [loading, setLoading] = useState(true);
   const { auth } = useAuth();
   const { id } = useParams();
+  const BASE_HOST = process.env.REACT_APP_BASE_HOST;
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8080/api/products/id/` + id, auth)
+    fetch(BASE_HOST + `/api/products/id/` + id, auth)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);

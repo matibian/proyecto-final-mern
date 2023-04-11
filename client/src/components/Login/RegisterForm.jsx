@@ -20,6 +20,7 @@ const theme = createTheme({
 });
 
 export default function RegisterForm(props) {
+  const BASE_HOST = process.env.REACT_APP_BASE_HOST;
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -33,7 +34,7 @@ export default function RegisterForm(props) {
       avatar: data.get("avatar"),
     };
 
-    fetch("http://127.0.0.1:8080/auth/signup", {
+    fetch(BASE_HOST + "/auth/signup", {
       method: "POST", // or 'PUT'
       body: JSON.stringify(user), // data can be `string` or {object}!
       headers: {

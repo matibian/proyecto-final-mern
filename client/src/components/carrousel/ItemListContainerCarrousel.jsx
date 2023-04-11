@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ItemListCarrousel from "./ItemListCarrousel";
 import Error from "../Grid/Error";
 import { useAuth } from "../../context/AuthContext";
+const BASE_HOST = process.env.REACT_APP_BASE_HOST;
 
 export default function ItemListContainerCarrousel() {
   const { logout } = useAuth();
@@ -9,12 +10,8 @@ export default function ItemListContainerCarrousel() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  // fetch("http://127.0.0.1:8080/api/products")
-  //   .then((response) => response.json())
-  //   .then((data) => setItems(data));
-
   useEffect(() => {
-    fetch("http://127.0.0.1:8080/api/products", {
+    fetch(BASE_HOST + "/api/products", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

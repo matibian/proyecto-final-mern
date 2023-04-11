@@ -12,6 +12,7 @@ import { useCart } from "../context/CartContext";
 import { useUser } from "../context/UserContext";
 import logo from "../images/logofashion.png";
 import { useAuth } from "../context/AuthContext";
+const BASE_HOST = process.env.REACT_APP_BASE_HOST;
 
 export default function CheckOut() {
   const logout = useAuth();
@@ -45,7 +46,7 @@ export default function CheckOut() {
       descuento: discount ? "10%" : "NO",
     };
 
-    fetch("http://127.0.0.1:8080/api/orders/checkout", {
+    fetch(BASE_HOST + "/api/orders/checkout", {
       method: "POST",
       body: JSON.stringify(order),
       headers: {

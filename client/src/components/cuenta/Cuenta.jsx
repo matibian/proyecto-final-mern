@@ -41,34 +41,25 @@ export default function Cuenta() {
 
                       <hr className="my-4" />
                       <div style={{ textAlign: "left" }}>
-                        <MDBTypography tag="h4" className="fw-bold mt-2 pt-1">
-                          Mail :
-                          <MDBTypography
-                            tag="h6"
-                            className="fw-bold mb-0 text-black"
-                          >
+                        <MDBTypography className="fw-bold mt-2 pt-1">
+                          Mail:
+                          <span className="fw-bold mb-0 text-black">
                             {user.email}
-                          </MDBTypography>
+                          </span>
                         </MDBTypography>
 
-                        <MDBTypography tag="h4" className="fw-bold mt-2 pt-1">
-                          Dirección :
-                          <MDBTypography
-                            tag="h6"
-                            className="fw-bold mb-0 text-black"
-                          >
+                        <MDBTypography className="fw-bold mt-2 pt-1">
+                          Dirección:
+                          <span className="fw-bold mb-0 text-black">
                             {user.dir}
-                          </MDBTypography>
+                          </span>
                         </MDBTypography>
 
-                        <MDBTypography tag="h4" className="fw-bold mt-2 pt-1">
-                          Telefono :
-                          <MDBTypography
-                            tag="h6"
-                            className="fw-bold mb-0 text-black"
-                          >
+                        <MDBTypography className="fw-bold mt-2 pt-1">
+                          Telefono:
+                          <span className="fw-bold mb-0 text-black">
                             {user.phone}
-                          </MDBTypography>
+                          </span>
                         </MDBTypography>
                       </div>
                       <div className="pt-5">

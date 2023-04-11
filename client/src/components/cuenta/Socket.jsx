@@ -1,7 +1,6 @@
 import { io } from "socket.io-client";
+const BASE_HOST = process.env.REACT_APP_BASE_HOST;
 
-// "undefined" means the URL will be computed from the `window.location` object
-
-export const socket = io("http://localhost:8080", {
+export const socket = io(BASE_HOST, {
   transports: ["websocket"],
 });

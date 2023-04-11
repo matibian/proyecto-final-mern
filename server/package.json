@@ -6,9 +6,9 @@
   "proxy": "http://localhost:3001",
   "scripts": {
     "test": "mocha ./test/test.js",
-    "dev": "nodemon server.js 8080 dev",
-    "prod": "nodemon server.js 8080 prod",
-    "start": "nodemon server.js "
+    "dev": "nodemon server.js dev",
+    "prod": "nodemon server.js prod",
+    "start": "node server.js "
   },
   "keywords": [],
   "author": "",
