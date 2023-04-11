@@ -25,6 +25,7 @@ const theme = createTheme({
 export default function LoginForm(props) {
   const navigate = useNavigate();
   const BASE_HOST = process.env.REACT_APP_BASE_HOST;
+  console.log(BASE_HOST);
   const [values, setValues] = React.useState({
     email: "",
     password: "",
@@ -157,6 +158,9 @@ export default function LoginForm(props) {
                     type="password"
                     id="password"
                     autoComplete="new-password"
+                    helperText={
+                      errors.password && "Por favor inserte un email válido"
+                    }
                   />
                 </Grid>
               </Grid>
