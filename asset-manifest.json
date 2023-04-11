@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/proyecto-final-client/static/css/main.ceead76f.css",
+    "main.js": "/proyecto-final-client/static/js/main.46456a86.js",
+    "static/js/787.45887f36.chunk.js": "/proyecto-final-client/static/js/787.45887f36.chunk.js",
+    "static/media/logofashion.png": "/proyecto-final-client/static/media/logofashion.4ed121518f92cb5264dd.png",
+    "static/media/revicons.eot": "/proyecto-final-client/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/proyecto-final-client/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/proyecto-final-client/static/media/revicons.e8746a624ed098489406.woff",
+    "index.html": "/proyecto-final-client/index.html",
+    "main.ceead76f.css.map": "/proyecto-final-client/static/css/main.ceead76f.css.map",
+    "main.46456a86.js.map": "/proyecto-final-client/static/js/main.46456a86.js.map",
+    "787.45887f36.chunk.js.map": "/proyecto-final-client/static/js/787.45887f36.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ceead76f.css",
+    "static/js/main.46456a86.js"
+  ]
+}
