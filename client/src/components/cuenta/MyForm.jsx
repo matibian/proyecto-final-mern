@@ -39,12 +39,5 @@ export function MyForm() {
         </MDBInputGroup>
       </MDBCardFooter>
     </>
-    // <form onSubmit={onSubmit}>
-    //   <input onChange={(e) => setValue(e.target.value)} />
-
-    //   <button type="submit" disabled={isLoading}>
-    //     Enviar
-    //   </button>
-    // </form>
   );
 }
